@@ -21,6 +21,7 @@ class studentdash extends Controller
 {
     public function studentdash(Request $rq){
         $count = StudentInfo::where('name', '=', Auth::user()->name)->count();
+        $clcnt = clearance::where('userid', '=', Auth::user()->id)->where('status', '=', 1)->count();
         if($count == 0){ 
             $name = Auth::user()->name;
             
@@ -28,8 +29,17 @@ class studentdash extends Controller
             return view('studentinfo', compact('name'));
         }
         else {
+
+            if($clcnt == 0){
+          
             $status = StudentInfo::where('name', '=', Auth::user()->name)->pluck('status');
-            return view('studentdash', compact('status'));
+            return view('studentdash', compact('status', 'clcnt'));
+            }
+            else{
+               
+                $status = StudentInfo::where('name', '=', Auth::user()->name)->pluck('status');
+                return view('studentdash', compact('status', 'clcnt'));  
+            }
         }
     }
 
@@ -70,12 +80,17 @@ class studentdash extends Controller
             ]);
             $fileModel = new clearance;
             if($rq->file()) {
+                clearance::where('userid', '=', Auth::user()->id)->update([
+                    'status' => 0,
+                ]);
                 $fileName = time().'_'.$rq->file->getClientOriginalName();
                 $filePath = $rq->file('file')->storeAs('uploads', $fileName, 'public');
                 $fileModel->userid = Auth::user()->id;
                 $fileModel->filename = time().'_'.$rq->file->getClientOriginalName();
                 $fileModel->file_path = '/storage/' . $filePath;
-                $fileModel->status = 0;
+                $fileModel->status = 1;
+
+             
                 $fileModel->save();
                 return back()
                 ->with('success','File has been uploaded.')
