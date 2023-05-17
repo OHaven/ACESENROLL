@@ -17,6 +17,7 @@ return new class extends Migration
             $table->String('userid');
             $table->String('year')->nullable();
             $table->String('course')->nullable();
+            $table->String('dean')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();
       });

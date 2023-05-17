@@ -23,10 +23,12 @@
             <div class="mt-4">
                 <x-label for="role">Role</x-label>
                 <select name="role" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
-                    <option value="Administrator" class="block mt-1 w-full">Administrator</option>
+                <option value="Student" class="block mt-1 w-full">Student</option>
+                <option value="Administrator" class="block mt-1 w-full">Administrator</option>
                  <option value="Dean" class="block mt-1 w-full">Dean</option>
                  <option value="Registrar" class="block mt-1 w-full">Registrar</option>
                  <option value="Cashier" class="block mt-1 w-full">Cashier</option>
+                 <option value="Teacher" class="block mt-1 w-full">Teacher</option>
                 </select>
              </div>
 
