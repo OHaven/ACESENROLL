@@ -162,8 +162,14 @@ class registdash extends Controller
     public function viewstu(Request $rq){
         $name = StudentInfo::where('id', '=', $rq->id)->pluck('name');
         $id = User::where('name', '=', $name)->pluck('id');
-
-        return view('viewstu', compact( 'id', 'name', 'pfp'));
+        $pfp = User::where('name', '=', $name)->pluck('profile_photo_path');
+        $email = User::where('name', '=', $name)->pluck('email');
+        $age = StudentInfo::where('name', '=', $name)->pluck('age');
+        $gend = StudentInfo::where('name', '=', $name)->pluck('gender');
+        $bday = StudentInfo::where('name', '=', $name)->pluck('birthdate');
+        $cv = StudentInfo::where('name', '=', $name)->pluck('civilstatus');
+        $cn = StudentInfo::where('name', '=', $name)->pluck('contactno');
+        return view('viewstu', compact( 'id', 'name', 'pfp', 'email', 'gend', 'bday', 'age', 'cv', 'cn'));
     }
 
     
