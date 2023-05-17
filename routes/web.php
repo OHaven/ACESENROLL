@@ -70,6 +70,7 @@ Route::middleware([
     Route::get('vieweditsub',  [deandash::class, 'vieweditsub']); 
     Route::post('editsub',  [deandash::class, 'editsub']); 
     Route::post('editcourses',  [deandash::class, 'editcourses']); 
+    Route::get('deanlogs',  [deandash::class, 'deanlogs']);
     
     
     

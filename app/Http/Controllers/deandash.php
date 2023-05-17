@@ -340,4 +340,12 @@ class deandash extends Controller
         return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids'));
 
     }
+
+    public function deanlogs(Request $rq){
+        $logcount = adminlogs::where('userid', '=', Auth::user()->id)->count();
+        $logs = adminlogs::where('userid', '=', Auth::user()->id)->orderBy('id', 'DESC')->pluck('action');
+        $logdt = adminlogs::where('userid', '=', Auth::user()->id)->orderBy('id', 'DESC')->pluck('created_at');
+        //dd($logcount);
+        return view('deanlogs', compact('logcount', 'logs', 'logdt'));
+    }
 }
