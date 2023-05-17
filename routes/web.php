@@ -66,6 +66,8 @@ Route::middleware([
     Route::get('deletesub',  [deandash::class, 'deletesub']);
     Route::get('coursesdean',  [deandash::class, 'coursesdean']);
     Route::get('deletecourse',  [deandash::class, 'deletecourse']);   
+    Route::get('editcourse',  [deandash::class, 'editcourse']); 
+    Route::get('vieweditsub',  [deandash::class, 'editsub']); 
     
     
     
