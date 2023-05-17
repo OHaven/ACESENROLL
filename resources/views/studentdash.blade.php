@@ -12,7 +12,7 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Upload Clearance') }}
         </h2>     
-        <form style="margin: 1em;" method="POST" enctype="multipart/form-data">
+        <form style="margin: 1em;" method="POST" enctype="multipart/form-data" action="upclear">
         @csrf
   <label for="file-input" class="sr-only">Choose file</label>
   <input type="file" name="file" id="file-input" class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400

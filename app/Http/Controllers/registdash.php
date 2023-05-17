@@ -138,6 +138,7 @@ class registdash extends Controller
         $syc = SeniorYear::count();
         $sy = SeniorYear::orderBy('id', 'DESC')->pluck('schoolyear');
         $cy = SeniorYear::orderBy('id', 'DESC')->pluck('created_at');
+
         return view('registrar', compact('cnter', 'status', 'schoolyear', 'sem', 'c', 'syc'));
 
         // return view('registrar');
@@ -155,5 +156,7 @@ class registdash extends Controller
         $status = User::where('role', '=', "Student")->where('status', '=', 0)->pluck('status');
         return view('allowstnd', compact('ucount', 'id', 'name', 'status'));
     }
+
+    
 
 }

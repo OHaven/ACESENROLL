@@ -13,6 +13,7 @@ use App\Models\Subjects;
 use App\Models\Teachers;
 use App\Models\yearlevel;
 use App\Models\StudentInfo;
+use App\Models\clearance;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -65,14 +66,16 @@ class studentdash extends Controller
 
     public function upclear(Request $rq){
         $rq->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
+            'file' => 'required|mimes:png,gif,jpeg,jpg,pdf|max:2048'
             ]);
-            $fileModel = new File;
-            if($req->file()) {
+            $fileModel = new clearance;
+            if($rq->file()) {
                 $fileName = time().'_'.$rq->file->getClientOriginalName();
                 $filePath = $rq->file('file')->storeAs('uploads', $fileName, 'public');
-                $fileModel->name = time().'_'.$rq->file->getClientOriginalName();
+                $fileModel->userid = Auth::user()->id;
+                $fileModel->filename = time().'_'.$rq->file->getClientOriginalName();
                 $fileModel->file_path = '/storage/' . $filePath;
+                $fileModel->status = 0;
                 $fileModel->save();
                 return back()
                 ->with('success','File has been uploaded.')
