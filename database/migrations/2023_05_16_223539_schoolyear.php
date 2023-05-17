@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('status');
             $table->String('schoolyear');
-            $table->integer('total_enr')->nullable;
+            $table->integer('total_enr')->nullable();
             $table->timestamps();
       });
     }

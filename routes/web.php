@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\checkuser;
 use App\Http\Controllers\admindash;
 use App\Http\Controllers\registdash;
+use App\Http\Controllers\deandash;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,9 @@ Route::middleware([
     Route::post('addsem',  [registdash::class, 'addsem']);
     Route::get('registlogs',  [registdash::class, 'rgislogs']);
     Route::post('addsy',  [registdash::class, 'addsy']);
+
+    //dean
+    Route::get('deandash',  [deandash::class, 'dashboard']);
 
     Route::get('logout', function () {
         Auth::guard('web')->logout();
