@@ -14,6 +14,7 @@ return new class extends Migration
           Schema::create('yearlevels', function (Blueprint $table) {
             $table->id();
             $table->String('yearlevel');
+            $table->String('subject')->nullable();
             $table->String('course')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();
