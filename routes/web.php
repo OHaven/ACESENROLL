@@ -60,6 +60,8 @@ Route::middleware([
     Route::get('registlogs',  [registdash::class, 'rgislogs']);
     Route::post('addsy',  [registdash::class, 'addsy']);
     Route::get('stnd',  [registdash::class, 'stnd']);
+    Route::get('viewstu',  [registdash::class, 'viewstu']);
+    
 
     //dean
     Route::get('deandash',  [deandash::class, 'dashboard']);

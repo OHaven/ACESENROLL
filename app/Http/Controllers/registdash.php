@@ -159,6 +159,13 @@ class registdash extends Controller
         return view('allowstnd', compact('ucount', 'id', 'name', 'status'));
     }
 
+    public function viewstu(Request $rq){
+        $name = StudentInfo::where('id', '=', $rq->id)->pluck('name');
+        $id = User::where('name', '=', $name)->pluck('id');
+
+        return view('viewstu', compact( 'id', 'name', 'pfp'));
+    }
+
     
 
 }

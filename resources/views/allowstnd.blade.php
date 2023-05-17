@@ -33,7 +33,7 @@
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                                     <td class="whitespace-nowrap px-6 py-4 font-medium">{{$id[$i]}}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{$name[$i]}}</td>
-                                    <td class="whitespace-nowrap px-6 py-4"> <a style="margin-right: 1em;" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="view?id={{$id[$i]}}">
+                                    <td class="whitespace-nowrap px-6 py-4"> <a style="margin-right: 1em;" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="viewstu?id={{$id[$i]}}">
                     {{ __('View') }}
                 </a></td>
                                     <td class="whitespace-nowrap px-6 py-4">
