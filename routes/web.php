@@ -59,6 +59,7 @@ Route::middleware([
     Route::post('addsem',  [registdash::class, 'addsem']);
     Route::get('registlogs',  [registdash::class, 'rgislogs']);
     Route::post('addsy',  [registdash::class, 'addsy']);
+    Route::get('stnd',  [registdash::class, 'stnd']);
 
     //dean
     Route::get('deandash',  [deandash::class, 'dashboard']);
@@ -77,6 +78,7 @@ Route::middleware([
 
     //student
     Route::get('studentdash',  [studentdash::class, 'studentdash']);
+    Route::post('addinfo',  [studentdash::class, 'addinfo']);
     
     
     

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Teachers;
-
+use App\Models\StudentInfo;
 
 class checkuser extends Controller
 {
@@ -15,6 +15,8 @@ class checkuser extends Controller
     $stat = Auth::user()->status;
 
     if($stat == 1){
+
+        
     if(strcmp(Auth::user()->role, "Administrator") == 0){
                     return redirect()->intended('admindash');
     }
@@ -35,13 +37,26 @@ class checkuser extends Controller
     return redirect()->intended('studentdash');
 }
 
+elseif(strcmp(Auth::user()->role, "Registrar") == 0){
+        return redirect()->intended('registdash');
+        
+    }
 
     else {
-        return redirect()->intended('registdash');
+        return redirect()->intended('logout');
     }
 }
-else {
+
+// elseif((strcmp(Auth::user()->role, "Student") == 0)) {
+//     $status = User::where('id', '=', Auth::user()->id)->pluck('role');
+//     // /dd($status);
+//   return view('block', compact('stat', 'status'));
+// }
+
+
+else{
     return view('block', compact('stat'));
+    
 }
 
 }

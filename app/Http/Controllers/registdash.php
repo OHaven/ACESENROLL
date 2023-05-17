@@ -148,4 +148,12 @@ class registdash extends Controller
         return view('enroll');
     }
 
+    public function stnd(Request $rq){
+        $ucount = User::where('role', '=', "Student")->where('status', '=', 0)->count();
+        $id = User::where('role', '=', "Student")->where('status', '=', 0)->pluck('id');
+        $name = User::where('role', '=', "Student")->where('status', '=', 0)->pluck('name');
+        $status = User::where('role', '=', "Student")->where('status', '=', 0)->pluck('status');
+        return view('allowstnd', compact('ucount', 'id', 'name', 'status'));
+    }
+
 }

@@ -11,11 +11,11 @@ use Spatie\Activitylog\Models\Activity;
 class admindash extends Controller
 {
     public function dashboard(Request $rq){
-        $name = User::where('status', '=', 0)->pluck('name');
-        $ucount = User::where('status', '=', 0)->count();
-        $role = User::where('status', '=', 0)->pluck('role');
-        $id = User::where('status', '=', 0)->pluck('id');
-        $status = User::where('status', '=', 0)->pluck('status');
+        $name = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('name');
+        $ucount = User::where('status', '=', 0)->where('role', '!=', "Student")->count();
+        $role = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('role');
+        $id = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('id');
+        $status = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('status');
         return view('admindash', compact('name', 'ucount', 'role', 'id', 'status'));
     }
 
@@ -32,11 +32,11 @@ class admindash extends Controller
             'action' => $causename[0]." approved ". $names[0] . "'s account.",
         ]);
 
-        $name = User::where('status', '=', 0)->pluck('name');
-        $ucount = User::where('status', '=', 0)->count();
-        $role = User::where('status', '=', 0)->pluck('role');
-        $id = User::where('status', '=', 0)->pluck('id');
-        $status = User::where('status', '=', 0)->pluck('status');
+        $name = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('name');
+        $ucount = User::where('status', '=', 0)->where('role', '!=', "Student")->count();
+        $role = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('role');
+        $id = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('id');
+        $status = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('status');
         return view('admindash', compact('name', 'ucount', 'role', 'id', 'status'));
     }
 
@@ -53,20 +53,20 @@ class admindash extends Controller
             'action' => $causename[0]." rejected ". $names[0] . "'s account.",
         ]);
 
-        $name = User::where('status', '=', 0)->pluck('name');
-        $ucount = User::where('status', '=', 0)->count();
-        $role = User::where('status', '=', 0)->pluck('role');
-        $id = User::where('status', '=', 0)->pluck('id');
-        $status = User::where('status', '=', 0)->pluck('status');
+        $name = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('name');
+        $ucount = User::where('status', '=', 0)->where('role', '!=', "Student")->count();
+        $role = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('role');
+        $id = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('id');
+        $status = User::where('status', '=', 0)->where('role', '!=', "Student")->pluck('status');
         return view('admindash', compact('name', 'ucount', 'role', 'id', 'status'));
     }
 
     public function staff(Request $rq){
-        $name = User::where('status', '=', 1)->pluck('name');
-        $ucount = User::where('status', '=', 1)->count();
-        $role = User::where('status', '=', 1)->pluck('role');
-        $id = User::where('status', '=', 1)->pluck('id');
-        $status = User::where('status', '=', 1)->pluck('status');
+        $name = User::where('status', '=', 1)->where('role', '!=', "Student")->pluck('name');
+        $ucount = User::where('status', '=', 1)->where('role', '!=', "Student")->count();
+        $role = User::where('status', '=', 1)->where('role', '!=', "Student")->pluck('role');
+        $id = User::where('status', '=', 1)->where('role', '!=', "Student")->pluck('id');
+        $status = User::where('status', '=', 1)->where('role', '!=', "Student")->pluck('status');
         return view('staff', compact('name', 'ucount', 'role', 'id', 'status'));
     }
 
@@ -79,11 +79,11 @@ class admindash extends Controller
     }
 
     public function revoke(Request $rq){
-        $name = User::where('status', '=', 1)->pluck('name');
-        $ucount = User::where('status', '=', 1)->count();
-        $role = User::where('status', '=', 1)->pluck('role');
-        $id = User::where('status', '=', 1)->pluck('id');
-        $status = User::where('status', '=', 1)->pluck('status');
+        $name = User::where('status', '=', 1)->where('role', '!=', "Student")->pluck('name');
+        $ucount = User::where('status', '=', 1)->where('role', '!=', "Student")->count();
+        $role = User::where('status', '=', 1)->where('role', '!=', "Student")->pluck('role');
+        $id = User::where('status', '=', 1)->where('role', '!=', "Student")->pluck('id');
+        $status = User::where('status', '=', 1)->where('role', '!=', "Student")->pluck('status');
         $ids = $rq->id;
         $names = User::where('id', '=', $ids)->pluck('name');
         $causename = User::where('id', '=', Auth::user()->id)->pluck('name');

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->String('name')->nullable();
             $table->String('age')->nullable();
+            $table->date('bdate')->nullable();
             $table->String('gender')->nullable();
             $table->String('civilstatus')->nullable();
             $table->String('contactno')->nullable();

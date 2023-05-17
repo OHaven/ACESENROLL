@@ -11,6 +11,7 @@ class StudentInfo extends Model
     protected $fillable = [
         'name',
         'age',
+        'birthdate',
         'gender',
         'civilstatus',
         'contactno',
