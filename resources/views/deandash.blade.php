@@ -120,7 +120,7 @@
 
     
 
-    <div class="py-12" style="width: 85%; margin-left: 1.5em;">
+    <div class="py-12">
         <div class="max-w-7xl  sm:px-6 lg:px-8" >
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
@@ -164,7 +164,7 @@
                 
                 <td class="px-6 py-4">
                     <a href="edit?id={{$ids[$i]}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" style="margin-right: 1em;">Change</a>
-                    <a href="deletesub?id={{$ids[$i]}}" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                    <a href="deletecourse?id={{$ids[$i]}}" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                 </td>
             </tr>
             

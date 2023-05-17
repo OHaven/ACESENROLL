@@ -179,5 +179,21 @@ class deandash extends Controller
         return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids'));
     }
 
-    public function coursesdean(Request $rq){}
+    public function coursesdean(Request $rq){
+      
+        $crs = Course::where('status', '=', 1)->pluck('course');
+        $crcnt = Course::where('status', '=', 1)->count();
+
+        $ids = Course::where('status', '=', 1)->pluck('id');
+        return view('courses_dean', compact('crs', 'crcnt', 'ids'));
+    }
+
+    public function deletecourse(Request $rq){
+      
+        $crs = Course::where('status', '=', 1)->pluck('course');
+        $crcnt = Course::where('status', '=', 1)->count();
+
+        $ids = Course::where('status', '=', 1)->pluck('id');
+        return view('courses_dean', compact('crs', 'crcnt', 'ids'));
+    }
 }
