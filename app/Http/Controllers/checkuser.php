@@ -31,6 +31,11 @@ class checkuser extends Controller
         return redirect()->intended('cashdash');
    }
 
+   elseif(strcmp(Auth::user()->role, "Student") == 0){
+    return redirect()->intended('studentdash');
+}
+
+
     else {
         return redirect()->intended('registdash');
     }

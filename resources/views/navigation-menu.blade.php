@@ -19,7 +19,7 @@
                     </x-nav-link>
                 </div>
 
-                <div class="nav-item dropdown">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="staff">
                         {{ __('Staff') }}
                     </x-nav-link>
@@ -202,9 +202,22 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+          
+        
+        @if(strcmp(Auth::user()->role, "Dean") == 0)
+    <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+        {{ __('Dashboard') }}
+    </x-responsive-nav-link>
+
+    <x-responsive-nav-link href="coursesdean">
+        {{ __('Courses') }}
+    </x-responsive-nav-link>
+
+    <x-responsive-nav-link href="deanlogs">
+        {{ __('Logs') }}
+    </x-responsive-nav-link>
+@endif
+            
         </div>
 
         <!-- Responsive Settings Options -->
