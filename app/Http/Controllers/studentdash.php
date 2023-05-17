@@ -22,11 +22,13 @@ class studentdash extends Controller
         $count = StudentInfo::where('name', '=', Auth::user()->name)->count();
         if($count == 0){ 
             $name = Auth::user()->name;
+            
             dd($name);
             return view('studentinfo', compact('name'));
         }
         else {
-            return view('studentdash');
+            $status = StudentInfo::where('name', '=', Auth::user()->name)->pluck('status');
+            return view('studentdash', compact('status'));
         }
     }
 
