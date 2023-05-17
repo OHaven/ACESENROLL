@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-          Schema::create('yearlevels', function (Blueprint $table) {
-            $table->id();
-            $table->String('yearlevel');
-            $table->String('subject')->nullable();
-            $table->String('course')->nullable();
-            $table->integer('status')->nullable();
-            $table->timestamps();
-      });
+      //     Schema::create('yearlevels', function (Blueprint $table) {
+      //       $table->id();
+      //       $table->String('yearlevel');
+      //       $table->String('subject')->nullable();
+      //       $table->String('course')->nullable();
+      //       $table->integer('status')->nullable();
+      //       $table->timestamps();
+      // });
     }
 
     /**
