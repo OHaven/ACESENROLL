@@ -16,8 +16,9 @@
     @csrf
   <div class="mb-6">
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subject</label>
-    <input type="text" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder=" {{$yrsub[0]}}" disabled>
-  </div>
+    <input type="text" name="sub" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" value=" {{$yrsub[0]}}" disabled>
+    <input type="number" name="id" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" value=" {{$ids[0]}}" style="display:none;">
+</div>
   <div class="mb-6">
     <label for="course" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Course</label>
     <select name="course" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">

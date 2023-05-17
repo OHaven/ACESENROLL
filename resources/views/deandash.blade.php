@@ -163,7 +163,7 @@
                 </td>
                 
                 <td class="px-6 py-4">
-                    <a href="editsub?id={{$ids[$i]}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" style="margin-right: 1em;">Change</a>
+                    <a href="vieweditsub?id={{$ids[$i]}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" style="margin-right: 1em;">Change</a>
                     <a href="deletesub?id={{$ids[$i]}}" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                 </td>
             </tr>
