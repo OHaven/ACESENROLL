@@ -143,4 +143,9 @@ class registdash extends Controller
         // return view('registrar');
     }}
 
+
+    public function enroll(Request $rq){
+        return view('enroll');
+    }
+
 }

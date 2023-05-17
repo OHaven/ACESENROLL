@@ -52,7 +52,7 @@ Route::middleware([
 
     //registrar
     Route::get('registdash',  [registdash::class, 'dashboard']);
-    Route::get('enroll',  [registdash::class, 'dashboard']);
+    Route::get('enroll',  [registdash::class, 'enroll']);
     Route::post('addsem',  [registdash::class, 'addsem']);
     Route::get('registlogs',  [registdash::class, 'rgislogs']);
     Route::post('addsy',  [registdash::class, 'addsy']);
