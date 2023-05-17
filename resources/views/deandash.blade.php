@@ -13,7 +13,7 @@
                         {{ __('Add Course') }}
                     </h2>
 
-                    <form method="POST" action=addsem>
+                    <form method="POST" action="addcourse">
                         @csrf
                         <div class="mt-4">
                             <x-label for="course" value="{{ __('Course') }}" />
@@ -21,9 +21,9 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-label for="" value="{{ __('School Year') }}" />
-                            <select name="role" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
-                <option value="Student" class="block mt-1 w-full">Student</option>
+                            <x-label for="" value="{{ __('Semester') }}" />
+                            <select name="sem" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
+                            <option value="{{$sy[0]}}" class="block mt-1 w-full">{{$sem[0]}}&nbsp;•&nbsp{{$sy[0]}}</option>
                 </select>
                             <!-- <x-input id="schoolyear" class="block mt-1 w-full" type="text" name="schoolyear" required /> -->
                         </div>
@@ -195,7 +195,8 @@
                 </td>
                 
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" style="margin-right: 1em;">Change</a>
+                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                 </td>
             </tr>
             
