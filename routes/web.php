@@ -6,6 +6,8 @@ use App\Http\Controllers\checkuser;
 use App\Http\Controllers\admindash;
 use App\Http\Controllers\registdash;
 use App\Http\Controllers\deandash;
+use App\Http\Controllers\studentdash;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +73,10 @@ Route::middleware([
     Route::post('editsub',  [deandash::class, 'editsub']); 
     Route::post('editcourses',  [deandash::class, 'editcourses']); 
     Route::get('deanlogs',  [deandash::class, 'deanlogs']);
+
+
+    //student
+    Route::get('studentdash',  [studentdash::class, 'studentdash']);
     
     
     
