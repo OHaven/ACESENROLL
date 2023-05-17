@@ -61,7 +61,20 @@ class studentdash extends Controller
 
     }
 
-    public function dashboard(Request $rq){
-        
+    public function upclear(Request $rq){
+        $rq->validate([
+            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
+            ]);
+            $fileModel = new File;
+            if($req->file()) {
+                $fileName = time().'_'.$rq->file->getClientOriginalName();
+                $filePath = $rq->file('file')->storeAs('uploads', $fileName, 'public');
+                $fileModel->name = time().'_'.$rq->file->getClientOriginalName();
+                $fileModel->file_path = '/storage/' . $filePath;
+                $fileModel->save();
+                return back()
+                ->with('success','File has been uploaded.')
+                ->with('file', $fileName);
+            }
     }
 }

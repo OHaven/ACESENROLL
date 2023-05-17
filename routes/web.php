@@ -79,6 +79,7 @@ Route::middleware([
     //student
     Route::get('studentdash',  [studentdash::class, 'studentdash']);
     Route::post('addinfo',  [studentdash::class, 'addinfo']);
+    Route::post('upclear', [studentdash::class, 'upclear'])->name('upclear');
     
     
     
