@@ -27,7 +27,7 @@ class deandash extends Controller
         $sub = Subjects::where('status', '=', 1)->pluck('subject');
         $subcnt = Subjects::where('status', '=', 1)->count();
 
-        $cnteryr = yearlevel::where('status', '=', )
+        $cnteryr = yearlevel::where('status', '=', );
 
         //dd($crcnt);
         return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub'));
