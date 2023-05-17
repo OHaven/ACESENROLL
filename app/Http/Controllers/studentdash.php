@@ -22,6 +22,7 @@ class studentdash extends Controller
     public function studentdash(Request $rq){
         $count = StudentInfo::where('name', '=', Auth::user()->name)->count();
         $clcnt = clearance::where('userid', '=', Auth::user()->id)->where('status', '=', 1)->count();
+        $clcnt = clearance::where('userid', '=', Auth::user()->id)->where('status', '=', 1)->count();
         if($count == 0){ 
             $name = Auth::user()->name;
             
