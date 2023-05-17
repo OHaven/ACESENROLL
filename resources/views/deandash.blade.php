@@ -131,7 +131,9 @@
                         <div class="mt-4">
                             <x-label for="" value="{{ __('Subject') }}" />
                             <select name="role" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
-                <option value="Student" class="block mt-1 w-full">Student</option>
+                            @for($i=0; $i < $subcnt; $i++)
+                                           <option value="Student" class="block mt-1 w-full">Student</option>
+                                           @endfor
                 </select>
                             <!-- <x-input id="schoolyear" class="block mt-1 w-full" type="text" name="schoolyear" required /> -->
                         </div>

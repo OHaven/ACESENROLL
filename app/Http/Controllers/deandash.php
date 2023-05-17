@@ -27,10 +27,13 @@ class deandash extends Controller
         $sub = Subjects::where('status', '=', 1)->pluck('subject');
         $subcnt = Subjects::where('status', '=', 1)->count();
 
-        $cnteryr = yearlevel::where('status', '=', );
+        $cnteryr = yearlevel::where('status', '=', 1)->count();
+        $yrlvl = yearlevel::where('status', '=', 1)->pluck('yearlevel');
+        $yrcrs = yearlevel::where('status', '=', 1)->pluck('course');
+        $yrsub = yearlevel::where('status', '=', 1)->pluck('subject');
 
         //dd($crcnt);
-        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub'));
+        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub'));
     }
 
     public function addcourse(Request $rq){
@@ -104,14 +107,14 @@ class deandash extends Controller
         $course = Subjects::where('Subject','=', $subj)->pluck('course');
         yearlevel::create([
             'yearlevel' => $yrlvl,
-            'course' => $course,
+            'course' => $course[0],
             'subject' => $subj,
             'status' => 1,
         ]);
 
         adminlogs::create([
             'userid' => Auth::user()->id,
-            'action' => Auth::user()->name." added Subject: ". $subject. " for Year: ". $yrlvl,
+            'action' => Auth::user()->name." added Subject: ". $subj[0]. " for Year: ". $yrlvl,
         ]);
 
 
