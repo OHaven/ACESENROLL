@@ -151,8 +151,13 @@ class registdash extends Controller
     public function enroll(Request $rq){
         $cnter = studentenroll::where('status', '=', 0)->count();
         $id = studentenroll::where('status', '=', 0)->pluck('id');
-        $id = studentenroll::where('status', '=', 0)->pluck('id');
-        return view('enroll');
+        $sid = studentenroll::where('status', '=', 0)->pluck('student_id');
+        $name = User::where('id', '=', $id)->pluck('name');
+        $course = studentenroll::where('status', '=', 0)->pluck('course');
+        $schoolyear = studentenroll::where('status', '=', 0)->pluck('schoolyear');
+        $yearlevel = studentenroll::where('status', '=', 0)->pluck('yearlevel');
+        $status = StudentInfo::where('name', '=', $name)->pluck('status');
+        return view('enroll', compact('cnter', 'id', 'sid', 'course', 'schoolyear', 'yearlevel', 'status'));
     }
 
     public function stnd(Request $rq){
@@ -214,5 +219,8 @@ class registdash extends Controller
         return view('registrar', compact('cnter', 'status', 'schoolyear', 'sem', 'c', 'syc', 'sy', 'cy', 'sxy'));
     }
     
+    public function viewenroll(Request $rq){
+        return view('viewenrollment');
+    }
 
 }

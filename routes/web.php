@@ -63,6 +63,7 @@ Route::middleware([
     Route::get('viewstu',  [registdash::class, 'viewstu']);
     Route::get('old',  [registdash::class, 'old']);
     Route::get('new',  [registdash::class, 'new']);
+    Route::get('viewenroll',  [registdash::class, 'viewenroll']);
     
 
     //dean
