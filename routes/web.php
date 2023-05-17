@@ -65,8 +65,8 @@ Route::middleware([
     Route::post('yrlvl',  [deandash::class, 'yrlvl']);
     Route::get('deletesub',  [deandash::class, 'deletesub']);
     Route::get('coursesdean',  [deandash::class, 'coursesdean']);
-
-    deletecourse
+    Route::get('deletecourse',  [deandash::class, 'deletecourse']);   
+    
     
     
     Route::get('logout', function () {

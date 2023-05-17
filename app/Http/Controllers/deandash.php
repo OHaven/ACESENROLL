@@ -189,7 +189,16 @@ class deandash extends Controller
     }
 
     public function deletecourse(Request $rq){
-      
+        $id = $rq->id;
+        $course = Course::where('id', '=', $id)->pluck('course');
+
+        Course::where('id', '=', $id)->delete();
+        
+        adminlogs::create([
+            'userid' => Auth::user()->id,
+            'action' => Auth::user()->name." Deleted: ". $course,
+        ]);
+
         $crs = Course::where('status', '=', 1)->pluck('course');
         $crcnt = Course::where('status', '=', 1)->count();
 
