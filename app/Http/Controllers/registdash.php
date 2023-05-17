@@ -220,6 +220,13 @@ class registdash extends Controller
     }
     
     public function viewenroll(Request $rq){
+        $name = StudentInfo::where('id', '=', $rq->id)->pluck('name');
+        $age = StudentInfo::where('id', '=', $rq->id)->pluck('age');
+        $bday = StudentInfo::where('id', '=', $rq->id)->pluck('birthdate');
+        $gender = StudentInfo::where('id', '=', $rq->id)->pluck('gender');
+        $cv = StudentInfo::where('id', '=', $rq->id)->pluck('civilstatus');
+        $cn = StudentInfo::where('id', '=', $rq->id)->pluck('contactno');
+        $stntype = StudentInfo::where('id', '=', $rq->id)->pluck('status');
         return view('viewenrollment');
     }
 

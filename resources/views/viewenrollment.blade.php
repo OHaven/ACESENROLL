@@ -65,8 +65,29 @@
 
     </li>
 </ul>
+<br>
+<br>
+<h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Student Enrollment Information:</h2>
+<ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+    <li style="list-style-type: none;">
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
+                    {{ __('Semester and Academic Year: ') }}
+                </h2>
+    </li>
+    <li style="list-style-type: none;">
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
+                    {{ __('Course: ') }} 
+                </h2>
+    </li>
 
+    <li style="list-style-type: none;">
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
+                    {{ __('Year Level: ') }} 
+                </h2>
+    </li>
 
+    
+</ul>
             
 
                 
