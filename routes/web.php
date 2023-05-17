@@ -62,7 +62,7 @@ Route::middleware([
     Route::get('deandash',  [deandash::class, 'dashboard']);
     Route::post('addcourse',  [deandash::class, 'addcourse']);
     Route::post('addsub',  [deandash::class, 'addsub']);
-    Route::post('addsubtoyr',  [deandash::class, 'addsub']);
+    Route::post('yrlvl',  [deandash::class, 'yrlvl']);
     
     Route::get('logout', function () {
         Auth::guard('web')->logout();

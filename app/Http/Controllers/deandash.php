@@ -10,6 +10,7 @@ use App\Models\SeniorYear;
 use App\Models\Course;
 use App\Models\Subjects;
 use App\Models\Teachers;
+use App\Models\yearlevel;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -25,6 +26,8 @@ class deandash extends Controller
 
         $sub = Subjects::where('status', '=', 1)->pluck('subject');
         $subcnt = Subjects::where('status', '=', 1)->count();
+
+        $cnteryr = yearlevel::where('status', '=', )
 
         //dd($crcnt);
         return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub'));
@@ -78,6 +81,39 @@ class deandash extends Controller
             'userid' => Auth::user()->id,
             'action' => Auth::user()->name." created Subject: ". $subject. " for course: ". $course,
         ]);
+
+        $syc = SemesterCollege::where('status', '=', 1)->count();
+        $sy = SemesterCollege::where('status', '=', 1)->pluck('schoolyear');
+        $sem = SemesterCollege::where('status', '=', 1)->pluck('sem');
+
+        $crs = Course::where('status', '=', 1)->pluck('course');
+        $crcnt = Course::where('status', '=', 1)->count();
+
+        $sub = Subjects::where('status', '=', 1)->pluck('subject');
+        $subcnt = Subjects::where('status', '=', 1)->count();
+
+        //dd($crcnt);
+        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub'));
+
+    }
+
+    public function yrlvl(Request $rq){
+        $subj = $rq->subject;
+        $yrlvl = $rq->yrlevel;
+
+        $course = Subjects::where('Subject','=', $subj)->pluck('course');
+        yearlevel::create([
+            'yearlevel' => $yrlvl,
+            'course' => $course,
+            'subject' => $subj,
+            'status' => 1,
+        ]);
+
+        adminlogs::create([
+            'userid' => Auth::user()->id,
+            'action' => Auth::user()->name." added Subject: ". $subject. " for Year: ". $yrlvl,
+        ]);
+
 
         $syc = SemesterCollege::where('status', '=', 1)->count();
         $sy = SemesterCollege::where('status', '=', 1)->pluck('schoolyear');

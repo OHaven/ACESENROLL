@@ -90,8 +90,8 @@
                         @csrf
                         
                         <div class="mt-4">
-                            <x-label for="" value="{{ __('Subject') }}" />
-                            <select name="role" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
+                            <x-label for="subject" value="{{ __('Subject') }}" />
+                            <select name="subject" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
                             @for($i=0; $i < $subcnt; $i++)
                             <option value="{{$sub[$i]}}" class="block mt-1 w-full">{{$sub[$i]}}</option>
                             @endfor
@@ -102,7 +102,7 @@
                         <div class="mt-4">
                             <x-label for="" value="{{ __('Year level') }}" />
                         
-                            <x-input id="schoolyear" class="block mt-1 w-full" type="text" name="yrlevel" required />
+                            <x-input id="schoolyear" class="block mt-1 w-full" type="number" name="yrlevel" required />
                         </div>
 
                         <div class="mt-4" style="margin-top: 2em;">
