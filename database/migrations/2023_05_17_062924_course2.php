@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->String('dean');
-            $table->String('year')->nullable();
+            $table->String('schoolyear')->nullable();
             $table->String('course')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();

@@ -12,6 +12,7 @@ class Course extends Model
     protected $fillable = [
         'schoolyear',
         'status',
-        'sem',
+        'course',
+        'dean',
     ];
 }
