@@ -79,8 +79,8 @@ Route::middleware([
     //student
     Route::get('studentdash',  [studentdash::class, 'studentdash']);
     Route::post('addinfo',  [studentdash::class, 'addinfo']);
-    Route::post('upclear', [studentdash::class, 'upclear'])->name('upclear');
-    
+    Route::post('upclear', [studentdash::class, 'upclear']);
+    Route::post('enrollapp', [studentdash::class, 'enrollapp']);
     
     
     Route::get('logout', function () {

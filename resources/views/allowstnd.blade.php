@@ -33,16 +33,18 @@
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                                     <td class="whitespace-nowrap px-6 py-4 font-medium">{{$id[$i]}}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{$name[$i]}}</td>
-                                    <td class="whitespace-nowrap px-6 py-4"> </td>
+                                    <td class="whitespace-nowrap px-6 py-4"> <a style="margin-right: 1em;" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="view?id={{$id[$i]}}">
+                    {{ __('View') }}
+                </a></td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         <div x-data="">
-                                         <a href="approve?id={{$id[$i]}}">   <button class="flex items-center justify-center px-3 py-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" style="display:inline-flex;">
-                                                         <span>Approve</span>
+                                         <a href="old?id={{$id[$i]}}">   <button class="flex items-center justify-center px-3 py-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" style="display:inline-flex;">
+                                                         <span>Old Student</span>
                                             </button> </a>
 
-                                            <a href="reject?id={{$id[$i]}}">
+                                            <a href="new?id={{$id[$i]}}">
                                             <button class="flex items-center justify-center px-3 py-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-md dark:bg-red-600 dark:hover:bg-red-700 dark:focus:bg-red-700 hover:bg-red-600 focus:outline-none focus:bg-red-500 focus:ring focus:ring-red-300 focus:ring-opacity-50" style="display:inline-flex;">
-                                                <span>Reject</span>
+                                                <span>New Student/ Transferee</span>
                                    </button>
                                             </a>
                                 </td>

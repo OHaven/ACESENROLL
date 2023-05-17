@@ -10,12 +10,12 @@ class studentenroll extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
+        'student_id',
         'course',
         'schoolyear',
         'yearlevel',
         'clearance_id',
-        'contactno',
+        'prf_id',
         'status',
     ];
 

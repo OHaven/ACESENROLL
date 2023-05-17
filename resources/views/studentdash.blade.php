@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
 
+    @if($encnt == 0)
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg" style="padding: 2em;">
@@ -27,7 +28,7 @@
     <label for="sy" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Year</label>
     <select name="sy" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
                           
-                            <option value="" class="block mt-1 w-full">{{$sem[0]}}&nbsp;•&nbsp{{$sy[0]}}</option>
+                            <option value="{{$sem[0]}} {{$sy[0]}}" class="block mt-1 w-full">{{$sem[0]}}&nbsp;•&nbsp{{$sy[0]}}</option>
                         
                 </select> </div>
   <div class="mb-6">
@@ -43,6 +44,7 @@
             </div>
         </div>
     </div>
+    @endif
 
 
     @if($status[0]==1)

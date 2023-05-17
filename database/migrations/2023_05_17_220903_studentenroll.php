@@ -11,7 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('studentenrolls', function (Blueprint $table) {
+            $table->id();
+            $table->integer('student_id')->nullable();
+            $table->String('course')->nullable();
+            $table->String('schoolyear')->nullable();
+            $table->String('yearlevel')->nullable();
+            $table->integer('clearance_id')->nullable();
+            $table->integer('prf_id')->nullable();
+            $table->integer('status')->nullable();
+            $table->timestamps();
+
+    });
+
+
     }
 
     /**
