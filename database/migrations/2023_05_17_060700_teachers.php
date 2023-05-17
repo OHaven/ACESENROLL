@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teachers', function (Blueprint $table) {
-            $table->id();
+    //     Schema::create('teachers', function (Blueprint $table) {
+    //         $table->id();
             
-            $table->String('userid');
-            $table->String('year')->nullable();
-            $table->String('course')->nullable();
-            $table->integer('status')->nullable();
-            $table->timestamps();
-      });
+    //         $table->String('userid');
+    //         $table->String('year')->nullable();
+    //         $table->String('course')->nullable();
+    //         $table->integer('status')->nullable();
+    //         $table->timestamps();
+    //   });
     }
 
     /**

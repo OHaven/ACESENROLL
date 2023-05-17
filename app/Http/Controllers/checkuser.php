@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Teachers;
 
 
 class checkuser extends Controller
@@ -23,6 +24,10 @@ class checkuser extends Controller
     }
 
     elseif(strcmp(Auth::user()->role, "Cashier") == 0){
+        return redirect()->intended('cashdash');
+   }
+
+   elseif(strcmp(Auth::user()->role, "Teacher") == 0){
         return redirect()->intended('cashdash');
    }
 
