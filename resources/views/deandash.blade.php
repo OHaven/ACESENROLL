@@ -95,11 +95,6 @@
                             <!-- <x-input id="schoolyear" class="block mt-1 w-full" type="text" name="schoolyear" required /> -->
                         </div>
 
-                        <div class="mt-4">
-                            <x-label for="" value="{{ __('Subject') }}" />
-                            <select name="role" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
-                <option value="Student" class="block mt-1 w-full">Year</option>
-                </select>
                             <!-- <x-input id="schoolyear" class="block mt-1 w-full" type="text" name="schoolyear" required /> -->
                         </div>
 
