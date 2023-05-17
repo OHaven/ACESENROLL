@@ -19,9 +19,10 @@ use Carbon\Carbon;
 class studentdash extends Controller
 {
     public function studentdash(Request $rq){
-        $count = StudentInfo::where('id', '=', Auth::user()->id)->count();
+        $count = StudentInfo::where('name', '=', Auth::user()->name)->count();
         if($count == 0){ 
             $name = Auth::user()->name;
+            dd($name);
             return view('studentinfo', compact('name'));
         }
         else {
@@ -37,17 +38,17 @@ class studentdash extends Controller
         $cv = $rq->cv;
         $cname= $rq->cnum;
 
-        dd($rq->cname);
+    //    / dd($rq->cname);
         
-        // StudentInfo::create([
-        //     'name' => $name,
-        //     'age' => $age,
-        //     'birthdate' => $bdate,
-        //     'gender' => $gender,
-        //     'civilstatus' => $cv,
-        //     'contactno' => $cname,
-        //     'status' => 0,
-        // ]);   
+        StudentInfo::create([
+            'name' => $name,
+            'age' => $age,
+            'birthdate' => $bdate,
+            'gender' => $gender,
+            'civilstatus' => $cv,
+            'contactno' => $cname,
+            'status' => 0,
+        ]);   
 
         $causename = User::where('id', '=', Auth::user()->id)->pluck('name');
 
@@ -58,5 +59,9 @@ class studentdash extends Controller
         
 
 
+    }
+
+    public function dashboard(Request $rq){
+        
     }
 }
