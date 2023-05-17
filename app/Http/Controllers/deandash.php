@@ -20,10 +20,11 @@ class deandash extends Controller
         $sy = SemesterCollege::where('status', '=', 1)->pluck('schoolyear');
         $sem = SemesterCollege::where('status', '=', 1)->pluck('sem');
 
+        $crs = Course::where('status', '=', 1)->pluck('course');
+        $crcnt = Course::where('status', '=', 1)->count();
 
-        
-
-        return view('deandash', compact('syc', 'sy', 'sem'));
+        dd($crcnt);
+        //return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt'));
     }
 
     public function addcourse(Request $rq){
