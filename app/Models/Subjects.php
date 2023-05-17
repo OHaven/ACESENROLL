@@ -12,6 +12,7 @@ class Subjects extends Model
     protected $fillable = [
         'dean',
         'course',
+        'subject',
         'year',
         'status',
     ];

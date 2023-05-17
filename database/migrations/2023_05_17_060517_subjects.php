@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->String('course');
+            $table->String('subject');
             $table->String('dean');
             $table->String('year');
             $table->integer('status')->nullable();

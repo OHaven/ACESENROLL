@@ -49,7 +49,7 @@
                         {{ __('Add Subject') }}
                     </h2>
 
-                    <form method="POST" action=addsem>
+                    <form method="POST" action=addsub>
                         @csrf
                         <div class="mt-4">
                             <x-label for="sub" value="{{ __('Subject') }}" />
@@ -57,8 +57,8 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-label for="" value="{{ __('Course') }}" />
-                            <select name="role" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
+                            <x-label for="course" value="{{ __('Course') }}" />
+                            <select name="course" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
                             @for($i=0; $i < $crcnt; $i++)
                             <option value="{{$crs[$i]}}" class="block mt-1 w-full">{{$crs[$i]}}</option>
                             @endfor
@@ -86,21 +86,23 @@
                         {{ __('Add Level') }}
                     </h2>
 
-                    <form method="POST" action=addsem>
+                    <form method="POST" action=yrlvl>
                         @csrf
                         
                         <div class="mt-4">
                             <x-label for="" value="{{ __('Subject') }}" />
                             <select name="role" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
-                <option value="Student" class="block mt-1 w-full">Student</option>
+                            @for($i=0; $i < $subcnt; $i++)
+                            <option value="{{$sub[$i]}}" class="block mt-1 w-full">{{$sub[$i]}}</option>
+                            @endfor
                 </select>
                             <!-- <x-input id="schoolyear" class="block mt-1 w-full" type="text" name="schoolyear" required /> -->
                         </div>
 
                         <div class="mt-4">
-                            <x-label for="" value="{{ __('Subject') }}" />
+                            <x-label for="" value="{{ __('Year level') }}" />
                         
-                            <x-input id="schoolyear" class="block mt-1 w-full" type="text" name="schoolyear" required />
+                            <x-input id="schoolyear" class="block mt-1 w-full" type="text" name="yrlevel" required />
                         </div>
 
                         <div class="mt-4" style="margin-top: 2em;">
@@ -123,7 +125,7 @@
                         {{ __('Add Subject to Year') }}
                     </h2>
 
-                    <form method="POST" action=addsem>
+                    <form method="POST" action=add>
                         @csrf
                         
                         <div class="mt-4">
