@@ -22,7 +22,8 @@ class studentdash extends Controller
     public function studentdash(Request $rq){
         $count = StudentInfo::where('name', '=', Auth::user()->name)->count();
         $clcnt = clearance::where('userid', '=', Auth::user()->id)->where('status', '=', 1)->count();
-        $clcnt = clearance::where('userid', '=', Auth::user()->id)->where('status', '=', 1)->count();
+       
+    
         if($count == 0){ 
             $name = Auth::user()->name;
             
@@ -32,14 +33,25 @@ class studentdash extends Controller
         else {
 
             if($clcnt == 0){
-          
+            $syc = SemesterCollege::where('status', '=', 1)->count();
+            $sy = SemesterCollege::where('status', '=', 1)->pluck('schoolyear');
+            $sem = SemesterCollege::where('status', '=', 1)->pluck('sem');
+
+            $crs = Course::where('status', '=', 1)->pluck('course');
+            $crcnt = Course::where('status', '=', 1)->count();    
             $status = StudentInfo::where('name', '=', Auth::user()->name)->pluck('status');
-            return view('studentdash', compact('status', 'clcnt'));
+            return view('studentdash', compact('status', 'clcnt', 'crcnt', 'syc', 'sy', 'sem', 'crs'));
             }
             else{
-               
+                
+                $syc = SemesterCollege::where('status', '=', 1)->count();
+                $sy = SemesterCollege::where('status', '=', 1)->pluck('schoolyear');
+                $sem = SemesterCollege::where('status', '=', 1)->pluck('sem');
+        
+                $crs = Course::where('status', '=', 1)->pluck('course');
+                $crcnt = Course::where('status', '=', 1)->count();
                 $status = StudentInfo::where('name', '=', Auth::user()->name)->pluck('status');
-                return view('studentdash', compact('status', 'clcnt'));  
+                return view('studentdash', compact('status', 'clcnt', 'crcnt', 'syc', 'sy', 'sem', 'crs'));
             }
         }
     }
@@ -61,7 +73,7 @@ class studentdash extends Controller
             'gender' => $gender,
             'civilstatus' => $cv,
             'contactno' => $cname,
-            'status' => 0,
+            'status' => 2,
         ]);   
 
         $causename = User::where('id', '=', Auth::user()->id)->pluck('name');

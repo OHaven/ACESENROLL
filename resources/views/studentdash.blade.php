@@ -5,6 +5,46 @@
         </h2>
     </x-slot>
 
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg" style="padding: 2em;">
+
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Submit Enrollment Application') }}
+        </h2>
+
+               
+<form method="POST" action="enrollapp" style="margin: 2em;">
+    @csrf
+  <div class="mb-6">
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Course</label>
+    <select name="cs" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
+    @for($i=0; $i < $crcnt; $i++)
+                            <option value="{{$crs[$i]}}" class="block mt-1 w-full">{{$crs[$i]}}</option>
+                        @endfor
+                </select> </div>
+  <div class="mb-6">
+    <label for="sy" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Year</label>
+    <select name="sy" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
+                          
+                            <option value="" class="block mt-1 w-full">{{$sem[0]}}&nbsp;•&nbsp{{$sy[0]}}</option>
+                        
+                </select> </div>
+  <div class="mb-6">
+
+    <x-label for="" value="{{ __('Year Level') }}" />
+                        
+                        <x-input id="yrlevel" class="block mt-1 w-full" type="text" name="yrlevel" required />  </div>
+  <div class="flex items-start mb-6">
+   
+  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Apply for Enrollment</button>
+</form>
+
+            </div>
+        </div>
+    </div>
+
+
     @if($status[0]==1)
     @if($clcnt==1)
     <div class="py-12">

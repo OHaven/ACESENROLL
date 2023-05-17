@@ -33,25 +33,23 @@ class checkuser extends Controller
         return redirect()->intended('cashdash');
    }
 
-   elseif(strcmp(Auth::user()->role, "Student") == 0){
-    return redirect()->intended('studentdash');
-}
 
 elseif(strcmp(Auth::user()->role, "Registrar") == 0){
         return redirect()->intended('registdash');
         
     }
 
-    else {
+    elseif((strcmp(Auth::user()->role, "Student") == 0)) {
+        User::where('id', '=', Auth::user()->id)->update(['status' => 1]);
+        return redirect()->intended('studentdash');
+    }
+
+    else{
         return redirect()->intended('logout');
     }
 }
 
-// elseif((strcmp(Auth::user()->role, "Student") == 0)) {
-//     $status = User::where('id', '=', Auth::user()->id)->pluck('role');
-//     // /dd($status);
-//   return view('block', compact('stat', 'status'));
-// }
+
 
 
 else{

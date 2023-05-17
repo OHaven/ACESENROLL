@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\adminlogs;
 use App\Models\SemesterCollege;
 use App\Models\SeniorYear;
+use App\Models\StudentInfo;
+use App\Models\clearance;
 use Spatie\Activitylog\Models\Activity;
 
 
@@ -150,10 +152,10 @@ class registdash extends Controller
     }
 
     public function stnd(Request $rq){
-        $ucount = User::where('role', '=', "Student")->where('status', '=', 0)->count();
-        $id = User::where('role', '=', "Student")->where('status', '=', 0)->pluck('id');
-        $name = User::where('role', '=', "Student")->where('status', '=', 0)->pluck('name');
-        $status = User::where('role', '=', "Student")->where('status', '=', 0)->pluck('status');
+        $ucount = StudentInfo::where('status', '=', 2)->count();
+        $id = StudentInfo::where('status', '=', 2)->pluck('id');
+        $name = StudentInfo::where('status', '=', 2)->pluck('name');
+        $status = StudentInfo::where('status', '=', 2)->pluck('status');
         return view('allowstnd', compact('ucount', 'id', 'name', 'status'));
     }
 
