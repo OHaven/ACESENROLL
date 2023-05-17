@@ -32,8 +32,8 @@ class deandash extends Controller
         $yrcrs = yearlevel::where('status', '=', 1)->pluck('course');
         $yrsub = yearlevel::where('status', '=', 1)->pluck('subject');
 
-        //dd($crcnt);
-        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub'));
+        $ids = yearlevel::where('status', '=', 1)->pluck('id');
+        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids'));
     }
 
     public function addcourse(Request $rq){
@@ -62,8 +62,13 @@ class deandash extends Controller
         $sub = Subjects::where('status', '=', 1)->pluck('subject');
         $subcnt = Subjects::where('status', '=', 1)->count();
 
-        //dd($crcnt);
-        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub'));
+        $cnteryr = yearlevel::where('status', '=', 1)->count();
+        $yrlvl = yearlevel::where('status', '=', 1)->pluck('yearlevel');
+        $yrcrs = yearlevel::where('status', '=', 1)->pluck('course');
+        $yrsub = yearlevel::where('status', '=', 1)->pluck('subject');
+
+        $ids = yearlevel::where('status', '=', 1)->pluck('id');
+        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids'));
     }
 
     public function addsub(Request $rq){
@@ -95,8 +100,13 @@ class deandash extends Controller
         $sub = Subjects::where('status', '=', 1)->pluck('subject');
         $subcnt = Subjects::where('status', '=', 1)->count();
 
-        //dd($crcnt);
-        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub'));
+ $cnteryr = yearlevel::where('status', '=', 1)->count();
+        $yrlvl = yearlevel::where('status', '=', 1)->pluck('yearlevel');
+        $yrcrs = yearlevel::where('status', '=', 1)->pluck('course');
+        $yrsub = yearlevel::where('status', '=', 1)->pluck('subject');
+
+        $ids = yearlevel::where('status', '=', 1)->pluck('id');
+        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids'));
 
     }
 
@@ -128,8 +138,46 @@ class deandash extends Controller
         $sub = Subjects::where('status', '=', 1)->pluck('subject');
         $subcnt = Subjects::where('status', '=', 1)->count();
 
-        //dd($crcnt);
-        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub'));
+        $cnteryr = yearlevel::where('status', '=', 1)->count();
+        $yrlvl = yearlevel::where('status', '=', 1)->pluck('yearlevel');
+        $yrcrs = yearlevel::where('status', '=', 1)->pluck('course');
+        $yrsub = yearlevel::where('status', '=', 1)->pluck('subject');
+
+        $ids = yearlevel::where('status', '=', 1)->pluck('id');
+        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids'));
 
     }
+
+    public function deletesub(Request $rq){
+        $id = $rq->id;
+        $subj = yearlevel::where('id', '=', $id)->pluck('subject');
+
+        yearlevel::where('id', '=', $id)->delete();
+        
+        adminlogs::create([
+            'userid' => Auth::user()->id,
+            'action' => Auth::user()->name." Deleted: ". $subj,
+        ]);
+
+        $syc = SemesterCollege::where('status', '=', 1)->count();
+        $sy = SemesterCollege::where('status', '=', 1)->pluck('schoolyear');
+        $sem = SemesterCollege::where('status', '=', 1)->pluck('sem');
+
+        $crs = Course::where('status', '=', 1)->pluck('course');
+        $crcnt = Course::where('status', '=', 1)->count();
+
+        $sub = Subjects::where('status', '=', 1)->pluck('subject');
+        $subcnt = Subjects::where('status', '=', 1)->count();
+
+        $cnteryr = yearlevel::where('status', '=', 1)->count();
+        $yrlvl = yearlevel::where('status', '=', 1)->pluck('yearlevel');
+        $yrcrs = yearlevel::where('status', '=', 1)->pluck('course');
+        $yrsub = yearlevel::where('status', '=', 1)->pluck('subject');
+
+        //dd($crcnt);
+        $ids = yearlevel::where('status', '=', 1)->pluck('id');
+        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids'));
+    }
+
+    public function coursesdean(Request $rq){}
 }

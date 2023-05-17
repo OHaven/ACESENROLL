@@ -63,7 +63,7 @@
 </div>
 
 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-    <x-nav-link href="enroll">
+    <x-nav-link href="coursesdean">
         {{ __('Courses') }}
     </x-nav-link>
 </div>
@@ -75,11 +75,6 @@
     </x-nav-link>
 </div>
 
-<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-    <x-nav-link href="enroll">
-        {{ __('Teachers') }}
-    </x-nav-link>
-</div>
 
 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
     <x-nav-link href="deanlogs">

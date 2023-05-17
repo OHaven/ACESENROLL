@@ -116,47 +116,7 @@
             </div>
         </div>
     </div>
-
-    <div class="py-12" style="width: 20em; display: inline-block; margin-left: 1.5em;">
-        <div class="max-w-7xl  sm:px-6 lg:px-8" >
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
-                    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                        {{ __('Add Subject to Year') }}
-                    </h2>
-
-                    <form method="POST" action=add>
-                        @csrf
-                        
-                        <div class="mt-4">
-                            <x-label for="" value="{{ __('Subject') }}" />
-                            <select name="role" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
-                            @for($i=0; $i < $subcnt; $i++)
-                                           <option value="Student" class="block mt-1 w-full">Student</option>
-                                           @endfor
-                </select>
-                            <!-- <x-input id="schoolyear" class="block mt-1 w-full" type="text" name="schoolyear" required /> -->
-                        </div>
-
-                        <div class="mt-4">
-                            <x-label for="" value="{{ __('Subject') }}" />
-                            <select name="role" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
-                <option value="Student" class="block mt-1 w-full">Year</option>
-                </select>
-                            <!-- <x-input id="schoolyear" class="block mt-1 w-full" type="text" name="schoolyear" required /> -->
-                        </div>
-
-                        <div class="mt-4" style="margin-top: 2em;">
-                        <x-button class="ml-0">
-                            {{ __('Add Subject') }}
-                        </x-button>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--  -->
 
     
 
@@ -189,23 +149,45 @@
             </tr>
         </thead>
         <tbody>
+        @if($cnteryr > 0)
+        @for($i=0; $i < $cnteryr; $i++)
             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   
+                   {{$yrsub[$i]}}
                 </th>
                 <td class="px-6 py-4">
-                    
+                {{$yrlvl[$i]}}
                 </td>
                 <td class="px-6 py-4">
-                    
+                {{$yrcrs[$i]}}
                 </td>
                 
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" style="margin-right: 1em;">Change</a>
-                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                    <a href="edit?id={{$ids[$i]}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" style="margin-right: 1em;">Change</a>
+                    <a href="deletesub?id={{$ids[$i]}}" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                 </td>
             </tr>
             
+
+            @endfor
+
+            @else
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    No Data
+                </th>
+                <td class="px-6 py-4">
+          
+                </td>
+                <td class="px-6 py-4">
+             
+                </td>
+                
+                <td class="px-6 py-4">
+                  
+                </td>
+            </tr>
+            @endif
         </tbody>
     </table>
 </div>

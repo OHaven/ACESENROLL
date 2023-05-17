@@ -63,6 +63,9 @@ Route::middleware([
     Route::post('addcourse',  [deandash::class, 'addcourse']);
     Route::post('addsub',  [deandash::class, 'addsub']);
     Route::post('yrlvl',  [deandash::class, 'yrlvl']);
+    Route::get('deletesub',  [deandash::class, 'deletesub']);
+    Route::get('coursesdean',  [deandash::class, 'coursesdean']);
+    
     
     Route::get('logout', function () {
         Auth::guard('web')->logout();
