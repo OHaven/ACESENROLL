@@ -37,7 +37,7 @@ class studentdash extends Controller
         $cv = $rq->cv;
         $cname= $rq->cnum;
 
-        dd($rq->birthdate);
+        dd($rq->cname);
         
         // StudentInfo::create([
         //     'name' => $name,
