@@ -227,7 +227,7 @@ class registdash extends Controller
         $cv = StudentInfo::where('id', '=', $rq->id)->pluck('civilstatus');
         $cn = StudentInfo::where('id', '=', $rq->id)->pluck('contactno');
         $stntype = StudentInfo::where('id', '=', $rq->id)->pluck('status');
-        return view('viewenrollment');
+        return view('viewenrollment', compact('name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype'));
     }
 
 }
