@@ -15,18 +15,18 @@ class registdash extends Controller
 {
     public function dashboard(Request $rq){
         $cnter = SemesterCollege::count();
-        $lastid = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('id');
-        $status = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('status');
-        $schoolyear = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('schoolyear');
-        $sem = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('sem');
-        $c = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('created_at');
+        $lastid = SemesterCollege::orderBy('id', 'DESC')->pluck('id');
+        $status = SemesterCollege::orderBy('id', 'DESC')->pluck('status');
+        $schoolyear = SemesterCollege::orderBy('id', 'DESC')->pluck('schoolyear');
+        $sem = SemesterCollege::orderBy('id', 'DESC')->pluck('sem');
+        $c = SemesterCollege::orderBy('id', 'DESC')->pluck('created_at');
         //dd($lastid);
         $syc = SeniorYear::count();
-        $sy = SeniorYear::orderBy('id', 'DESC')->limit(12)->pluck('schoolyear');
-        $cy = SeniorYear::orderBy('id', 'DESC')->limit(12)->pluck('created_at');
-        $sxy = SeniorYear::orderBy('id', 'DESC')->limit(12)->pluck('status');
+        $sy = SeniorYear::orderBy('id', 'DESC')->pluck('schoolyear');
+        $cy = SeniorYear::orderBy('id', 'DESC')->pluck('created_at');
+        $sxy = SeniorYear::orderBy('id', 'DESC')->pluck('status');
 
-        dd($sy);
+        // dd($sy);
         return view('registrar', compact('cnter', 'status', 'schoolyear', 'sem', 'c', 'syc', 'sy', 'cy', 'sxy'));
     }
 
@@ -53,16 +53,16 @@ class registdash extends Controller
             'action' => $causename[0]." created ". $sem[0]." for School Year ". $sy[0],
         ]);
         $cnter = SemesterCollege::count();
-        $lastid = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('id');
-        $status = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('status');
-        $schoolyear = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('schoolyear');
-        $sem = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('sem');
-        $c = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('created_at');
+        $lastid = SemesterCollege::orderBy('id', 'DESC')->pluck('id');
+        $status = SemesterCollege::orderBy('id', 'DESC')->pluck('status');
+        $schoolyear = SemesterCollege::orderBy('id', 'DESC')->pluck('schoolyear');
+        $sem = SemesterCollege::orderBy('id', 'DESC')->pluck('sem');
+        $c = SemesterCollege::orderBy('id', 'DESC')->pluck('created_at');
         //dd($lastid);
         $syc = SeniorYear::count();
-        $sy = SeniorYear::orderBy('id', 'DESC')->limit(12)->pluck('schoolyear');
-        $cy = SeniorYear::orderBy('id', 'DESC')->limit(12)->pluck('created_at');
-        $sxy = SeniorYear::orderBy('id', 'DESC')->limit(12)->pluck('status');
+        $sy = SeniorYear::orderBy('id', 'DESC')->pluck('schoolyear');
+        $cy = SeniorYear::orderBy('id', 'DESC')->pluck('created_at');
+        $sxy = SeniorYear::orderBy('id', 'DESC')->pluck('status');
         return view('registrar', compact('cnter', 'status', 'schoolyear', 'sem', 'c', 'syc', 'sy', 'cy', 'sxy'));
         // return view('registrar');
     }
@@ -100,15 +100,15 @@ class registdash extends Controller
             'action' => $causename[0]." created School Year ". $sysh[0]. " for Senior High School",
         ]);
         $cnter = SemesterCollege::count();
-        $lastid = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('id');
-        $status = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('status');
-        $schoolyear = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('schoolyear');
-        $sem = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('sem');
-        $c = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('created_at');
+        $lastid = SemesterCollege::orderBy('id', 'DESC')->pluck('id');
+        $status = SemesterCollege::orderBy('id', 'DESC')->pluck('status');
+        $schoolyear = SemesterCollege::orderBy('id', 'DESC')->pluck('schoolyear');
+        $sem = SemesterCollege::orderBy('id', 'DESC')->pluck('sem');
+        $c = SemesterCollege::orderBy('id', 'DESC')->pluck('created_at');
 
         $syc = SeniorYear::count();
-        $sy = SeniorYear::orderBy('id', 'DESC')->limit(12)->pluck('schoolyear');
-        $cy = SeniorYear::orderBy('id', 'DESC')->limit(12)->pluck('created_at');
+        $sy = SeniorYear::orderBy('id', 'DESC')->pluck('schoolyear');
+        $cy = SeniorYear::orderBy('id', 'DESC')->pluck('created_at');
         return view('registrar', compact('cnter', 'status', 'schoolyear', 'sem', 'c', 'syc'));
 
     }
@@ -129,15 +129,15 @@ class registdash extends Controller
             'action' => $causename[0]." created School Year ". $sysh[0]. " for Senior High School",
         ]);
         $cnter = SemesterCollege::count();
-        $lastid = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('id');
-        $status = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('status');
-        $schoolyear = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('schoolyear');
-        $sem = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('sem');
-        $c = SemesterCollege::orderBy('id', 'DESC')->limit(12)->pluck('created_at');
+        $lastid = SemesterCollege::orderBy('id', 'DESC')->pluck('id');
+        $status = SemesterCollege::orderBy('id', 'DESC')->pluck('status');
+        $schoolyear = SemesterCollege::orderBy('id', 'DESC')->pluck('schoolyear');
+        $sem = SemesterCollege::orderBy('id', 'DESC')->pluck('sem');
+        $c = SemesterCollege::orderBy('id', 'DESC')->pluck('created_at');
 
         $syc = SeniorYear::count();
-        $sy = SeniorYear::orderBy('id', 'DESC')->limit(12)->pluck('schoolyear');
-        $cy = SeniorYear::orderBy('id', 'DESC')->limit(12)->pluck('created_at');
+        $sy = SeniorYear::orderBy('id', 'DESC')->pluck('schoolyear');
+        $cy = SeniorYear::orderBy('id', 'DESC')->pluck('created_at');
         return view('registrar', compact('cnter', 'status', 'schoolyear', 'sem', 'c', 'syc'));
 
         // return view('registrar');
