@@ -61,6 +61,8 @@ Route::middleware([
     Route::post('addsy',  [registdash::class, 'addsy']);
     Route::get('stnd',  [registdash::class, 'stnd']);
     Route::get('viewstu',  [registdash::class, 'viewstu']);
+    Route::get('old',  [registdash::class, 'old']);
+    Route::get('new',  [registdash::class, 'new']);
     
 
     //dean

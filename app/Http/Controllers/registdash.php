@@ -10,6 +10,7 @@ use App\Models\SemesterCollege;
 use App\Models\SeniorYear;
 use App\Models\StudentInfo;
 use App\Models\clearance;
+use App\Models\studentenroll;
 use Spatie\Activitylog\Models\Activity;
 
 
@@ -148,6 +149,9 @@ class registdash extends Controller
 
 
     public function enroll(Request $rq){
+        $cnter = studentenroll::where('status', '=', 0)->count();
+        $id = studentenroll::where('status', '=', 0)->pluck('id');
+        $id = studentenroll::where('status', '=', 0)->pluck('id');
         return view('enroll');
     }
 
@@ -172,6 +176,43 @@ class registdash extends Controller
         return view('viewstu', compact( 'id', 'name', 'pfp', 'email', 'gend', 'bday', 'age', 'cv', 'cn'));
     }
 
+    public function old(Request $rq){
+        $name = StudentInfo::where('id', '=', $rq->id)->pluck('name');
+        StudentInfo::where('name', '=', $name)->update(['status' => 1,]);
+        $cnter = SemesterCollege::count();
+        $lastid = SemesterCollege::orderBy('id', 'DESC')->pluck('id');
+        $status = SemesterCollege::orderBy('id', 'DESC')->pluck('status');
+        $schoolyear = SemesterCollege::orderBy('id', 'DESC')->pluck('schoolyear');
+        $sem = SemesterCollege::orderBy('id', 'DESC')->pluck('sem');
+        $c = SemesterCollege::orderBy('id', 'DESC')->pluck('created_at');
+        //dd($lastid);
+        $syc = SeniorYear::count();
+        $sy = SeniorYear::orderBy('id', 'DESC')->pluck('schoolyear');
+        $cy = SeniorYear::orderBy('id', 'DESC')->pluck('created_at');
+        $sxy = SeniorYear::orderBy('id', 'DESC')->pluck('status');
+
+        // dd($sy);
+        return view('registrar', compact('cnter', 'status', 'schoolyear', 'sem', 'c', 'syc', 'sy', 'cy', 'sxy'));
+    }
+
+    public function new(Request $rq){
+        $name = StudentInfo::where('id', '=', $rq->id)->pluck('name');
+        StudentInfo::where('name', '=', $name)->update(['status' => 2,]);
+        $cnter = SemesterCollege::count();
+        $lastid = SemesterCollege::orderBy('id', 'DESC')->pluck('id');
+        $status = SemesterCollege::orderBy('id', 'DESC')->pluck('status');
+        $schoolyear = SemesterCollege::orderBy('id', 'DESC')->pluck('schoolyear');
+        $sem = SemesterCollege::orderBy('id', 'DESC')->pluck('sem');
+        $c = SemesterCollege::orderBy('id', 'DESC')->pluck('created_at');
+        //dd($lastid);
+        $syc = SeniorYear::count();
+        $sy = SeniorYear::orderBy('id', 'DESC')->pluck('schoolyear');
+        $cy = SeniorYear::orderBy('id', 'DESC')->pluck('created_at');
+        $sxy = SeniorYear::orderBy('id', 'DESC')->pluck('status');
+
+        // dd($sy);
+        return view('registrar', compact('cnter', 'status', 'schoolyear', 'sem', 'c', 'syc', 'sy', 'cy', 'sxy'));
+    }
     
 
 }

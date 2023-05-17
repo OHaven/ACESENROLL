@@ -24,7 +24,7 @@
                     Course
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Category
+                    Year Level
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Student Type
@@ -49,7 +49,9 @@
                     
                 </td>
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                <a href="viewenroll?id=">   <button class="flex items-center justify-center px-3 py-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" style="display:inline-flex;">
+                                                         <span>View Application</span>
+                                            </button> </a>
                 </td>
             </tr>
             
