@@ -12,7 +12,7 @@
               
 
                
-<form method="POST" action="editsub">
+<form method="POST" action="editsub?idss={{$ids[0]}}">
     @csrf
   <div class="mb-6">
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subject</label>

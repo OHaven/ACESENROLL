@@ -75,7 +75,7 @@ class deandash extends Controller
         $subject = $rq->sub;
         $course = $rq->course;
         $sys = Course::where('course', '=', $course)->pluck('schoolyear');
-        $sem = SemesterCollege::where('schoolyear', '=', $sys)->where('status', '=', 1)->pluck('sem');
+        //$sem = SemesterCollege::where('schoolyear', '=', $sys)->where('status', '=', 1)->pluck('sem');
 
         Subjects::create([
         'dean' => Auth::user()->id,
@@ -185,7 +185,8 @@ class deandash extends Controller
         $crcnt = Course::where('status', '=', 1)->count();
 
         $ids = Course::where('status', '=', 1)->pluck('id');
-        return view('courses_dean', compact('crs', 'crcnt', 'ids'));
+        $crsid = Course::where('status', '=', 1)->pluck('id');
+        return view('courses_dean', compact('crs', 'crcnt', 'ids', 'crsid'));
     }
 
     public function deletecourse(Request $rq){
@@ -208,9 +209,8 @@ class deandash extends Controller
 
     public function editcourse(Request $rq){
         $id = $rq->id;
+        $dean = Auth::user()->name;
         $course = Course::where('id', '=', $id)->pluck('course');
-
-        Course::where('id', '=', $id)->delete();
         
         adminlogs::create([
             'userid' => Auth::user()->id,
@@ -234,7 +234,8 @@ class deandash extends Controller
 
         //dd($crcnt);
         $ids = yearlevel::where('status', '=', 1)->pluck('id');
-        return view('editsub', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids'));
+        $crsid = Course::where('status', '=', 1)->pluck('id');
+        return view('vieweditcourse', compact('id', 'dean', 'crsid', 'syc', 'sy', 'sem', 'crs', 'crcnt', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids', 'course'));
     }
 
     public function vieweditsub(Request $rq){
@@ -269,14 +270,50 @@ class deandash extends Controller
         $sub = $rq->sub;
         $course = $rq->course;
         $yrlevel = $rq->yrlevel;
-        $id = $rq->id;
+        $idss = (int)$rq->idss;
 
-        dd($id);
-        yearlevel::where('id', '=', $id)->update([
+        yearlevel::where('id', '=', $idss)->update([
             'yearlevel' => $yrlevel,
             'course' => $course,
             'subject' => $sub,
             'status' => 1,
+        ]);
+        
+        adminlogs::create([
+            'userid' => Auth::user()->id,
+            'action' => Auth::user()->name." edited: ". $sub,
+        ]);
+
+        $syc = SemesterCollege::where('status', '=', 1)->count();
+        $sy = SemesterCollege::where('status', '=', 1)->pluck('schoolyear');
+        $sem = SemesterCollege::where('status', '=', 1)->pluck('sem');
+
+        $crs = Course::where('status', '=', 1)->pluck('course');
+        $crcnt = Course::where('status', '=', 1)->count();
+        $crsid = Course::where('status', '=', 1)->pluck('id');
+
+        $sub = Subjects::where('status', '=', 1)->pluck('subject');
+        $subcnt = Subjects::where('status', '=', 1)->count();
+
+        $cnteryr = yearlevel::where('status', '=', 1)->count();
+        $yrlvl = yearlevel::where('status', '=', 1)->pluck('yearlevel');
+        $yrcrs = yearlevel::where('status', '=', 1)->pluck('course');
+        $yrsub = yearlevel::where('status', '=', 1)->pluck('subject');
+
+        $ids = yearlevel::where('status', '=', 1)->pluck('id');
+        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'crsideditcourse', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids'));
+
+    }
+
+
+    public function editcourses(Request $rq){
+        $course = $rq->course;
+        $sy = $rq->sy;
+        $idss = (int)$rq->idss;
+
+        Course::where('id', '=', $idss)->update([
+            'schoolyear' => $sy,
+        'course' => $course,
         ]);
         
         adminlogs::create([
