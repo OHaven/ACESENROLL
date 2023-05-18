@@ -350,7 +350,28 @@ class registdash extends Controller
 
 public function tocash(Request $rq){
     $stdnt = (int)$rq->id;
-    dd($stdnt);
+    toapprovecash::create([
+        'student_id' => $stdnt,
+        'status' => 0,
+    ]);
+
+    $cnter = SemesterCollege::count();
+    $lastid = SemesterCollege::orderBy('id', 'DESC')->pluck('id');
+    $status = SemesterCollege::orderBy('id', 'DESC')->pluck('status');
+    $schoolyear = SemesterCollege::orderBy('id', 'DESC')->pluck('schoolyear');
+    $sem = SemesterCollege::orderBy('id', 'DESC')->pluck('sem');
+    $c = SemesterCollege::orderBy('id', 'DESC')->pluck('created_at');
+    //dd($lastid);
+    $syc = SeniorYear::count();
+    $sy = SeniorYear::orderBy('id', 'DESC')->pluck('schoolyear');
+    $cy = SeniorYear::orderBy('id', 'DESC')->pluck('created_at');
+    $sxy = SeniorYear::orderBy('id', 'DESC')->pluck('status');
+
+    // dd($sy);
+    return view('registrar', compact('cnter', 'status', 'schoolyear', 'sem', 'c', 'syc', 'sy', 'cy', 'sxy'));
+
+    
+        
 }
 
 
