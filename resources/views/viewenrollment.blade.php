@@ -127,13 +127,13 @@
                 {{$stdcrs[0]}}
                 </th>
                 <td class="px-6 py-4">
-                    Silver
+                    Programming Paradigm 3
                 </td>
                 <td class="px-6 py-4">
-                    Laptop
+                    Mr. Pingol
                 </td>
                 <td class="px-6 py-4">
-                    $2999
+                  
                 </td>
             </tr>
             

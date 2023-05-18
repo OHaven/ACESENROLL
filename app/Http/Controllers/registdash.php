@@ -8,9 +8,11 @@ use App\Models\User;
 use App\Models\adminlogs;
 use App\Models\SemesterCollege;
 use App\Models\SeniorYear;
+use App\Models\Subjects;
 use App\Models\StudentInfo;
 use App\Models\clearance;
 use App\Models\studentenroll;
+use App\Models\student_sub;
 use Spatie\Activitylog\Models\Activity;
 
 
@@ -238,15 +240,28 @@ class registdash extends Controller
         $stdsy= studentenroll::where('student_id', '=', $stnid[0])->pluck('schoolyear');
 
         if($stntype[0] == 1){
-            $fcount = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->count();
-            $fname = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->pluck('file_path');
-            return view('viewenrollment', compact('fcount','fname', 'email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
-         }
+            $subcounter = Subjects::where('course', '=', $stdcrs[0])->count();
+            $subjs = Subjects::where('course', '=', $stdcrs[0])->pluck('subject');
+            for($i = 0; $i < $subcounter; $i++){
+        student_sub::create([
+            'student_id' => $stnid[0],
+            'course' => $stdcrs[0],
+            'subject' => $subjs[$i],
+            'status' => 1,
+        ]);
+    }
+    }
+
+        // if($stntype[0] == 1){
+        //     $fcount = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->count();
+        //     $fname = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->pluck('file_path');
+        //     return view('viewenrollment', compact('fcount','fname', 'email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
+        //  }
  
-        elseif($stntype[0] == 0){
+        // elseif($stntype[0] == 0){
             
-            return view('viewenrollment', compact('email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
-         }
+        //     return view('viewenrollment', compact('email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
+        //  }
 
          else{
             return redirect()->intended('logout');

@@ -11,7 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('student_subs', function (Blueprint $table) {
+            $table->id();
+            $table->integer('student_id')->nullable();
+            $table->String('course')->nullable();
+            $table->String('subject')->nullable();
+            $table->String('teacher')->nullable();
+            $table->integer('grade')->nullable();
+            $table->integer('status')->nullable();
+            $table->timestamps();
+
+    });
     }
 
     /**
