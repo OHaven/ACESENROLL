@@ -220,14 +220,22 @@ class registdash extends Controller
     }
     
     public function viewenroll(Request $rq){
+       
         $name = StudentInfo::where('id', '=', $rq->id)->pluck('name');
+        $stnid = User::where('name', '=', $name)->pluck('id');
+        $email = User::where('name', '=', $name)->pluck('email');
         $age = StudentInfo::where('id', '=', $rq->id)->pluck('age');
         $bday = StudentInfo::where('id', '=', $rq->id)->pluck('birthdate');
         $gender = StudentInfo::where('id', '=', $rq->id)->pluck('gender');
         $cv = StudentInfo::where('id', '=', $rq->id)->pluck('civilstatus');
         $cn = StudentInfo::where('id', '=', $rq->id)->pluck('contactno');
         $stntype = StudentInfo::where('id', '=', $rq->id)->pluck('status');
-        return view('viewenrollment', compact('name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype'));
+
+        $stdntid = studentenroll::where('id', '=', $stnid[0])->pluck('student_id');
+        $stdcrs = studentenroll::where('id', '=', $stnid[0])->pluck('course');
+        $stdyrlevel = studentenroll::where('id', '=', $stnid[0])->pluck('yearlevel');
+        $stdsy= studentenroll::where('id', '=', $stnid[0])->pluck('schoolyear');
+        return view('viewenrollment', compact('email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
     }
 
 }

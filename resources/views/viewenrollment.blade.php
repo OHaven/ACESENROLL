@@ -17,50 +17,56 @@
 <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
     <li style="list-style-type: none;">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
-                    {{ __('Name: ') }}
+                    {{ __('Name: ') }} <span style="font-size: 1em; float:right; margin-right: 1em;">{{$name[0]}}</span>
                 </h2>
     </li>
     <li style="list-style-type: none;">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
-                    {{ __('Age: ') }} 
-                </h2>
-    </li>
-
-    <li style="list-style-type: none;">
-    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
-                    {{ __('Birthdate: ') }} 
+                    {{ __('Age: ') }}  <span style="font-size: 1em; float:right; margin-right: 1em;">{{$age[0]}} years old</span>
                 </h2>
     </li>
 
     <li style="list-style-type: none;">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
-                    {{ __('Gender: ') }} 
+                    {{ __('Birthdate: ') }}  <span style="font-size: 1em; float:right; margin-right: 1em;">{{$bday[0]}}</span>
                 </h2>
     </li>
 
     <li style="list-style-type: none;">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
-                    {{ __('Civil Status: ') }} 
-                </h2>
-
-    </li>
-
-    <li style="list-style-type: none;">
-    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
-                    {{ __('Email: ') }} 
+                    {{ __('Gender: ') }}  <span style="font-size: 1em; float:right; margin-right: 1em;">{{$gender[0]}}</span>
                 </h2>
     </li>
 
     <li style="list-style-type: none;">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
-                    {{ __('Contact No: ') }} 
+                    {{ __('Civil Status: ') }} <span style="font-size: 1em; float:right; margin-right: 1em;">{{$cv[0]}}</span>
                 </h2>
 
     </li>
 
     <li style="list-style-type: none;">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
-                    {{ __('Student Type: ') }} 
+                    {{ __('Email: ') }} <span style="font-size: 1em; float:right; margin-right: 1em;">{{$email[0]}}</span>
+                </h2>
+    </li>
+
+    <li style="list-style-type: none;">
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
+                    {{ __('Contact No: ') }}  <span style="font-size: 1em; float:right; margin-right: 1em;">{{$cn[0]}}</span>
+                </h2>
+
+    </li>
+
+    <li style="list-style-type: none;">
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
+                    {{ __('Student Type: ') }}  <span style="font-size: 1em; float:right; margin-right: 1em;">@if($stntype[0]==1)
+                    Old Student
+                    @elseif($stntype[0]==0)
+                    New Student 
+                    @else 
+                    Unknown 
+                    @endif</span>
                 </h2>
 
     </li>
@@ -71,12 +77,12 @@
 <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
     <li style="list-style-type: none;">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
-                    {{ __('Semester and Academic Year: ') }}
+                    {{ __('Semester and Academic Year: ') }} <span style="font-size: 1em; float:right; margin-right: 1em;">{{$stdsy[0]}}</span>
                 </h2>
     </li>
     <li style="list-style-type: none;">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
-                    {{ __('Course: ') }} 
+                    {{ __('Course: ') }}  <span style="font-size: 1em; float:right; margin-right: 1em;">{{$stdcrs[0]}}</span>
                 </h2>
     </li>
 
