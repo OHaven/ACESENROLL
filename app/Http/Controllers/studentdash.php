@@ -58,7 +58,8 @@ class studentdash extends Controller
         }
         else {
             $status = StudentInfo::where('name', '=', Auth::user()->name)->pluck('status');
-            return view('studentdash', compact('status', 'clcnt', 'encnt'));
+            $id = Auth::user()->id;
+            return view('studentdash', compact('status', 'clcnt', 'encnt', 'id'));
         }
     }
     }
@@ -130,5 +131,13 @@ class studentdash extends Controller
             'status' => 0,
         ]);
         return back();
+    }
+
+    public function pay(Request $rq){
+        toapprovecash::where('student_id' == $rq->id)->update([
+
+            'status' => 1,
+        ]);
+        return Redirect::to('https://pm.link/org-aces/test/u3zXoGJ');
     }
 }

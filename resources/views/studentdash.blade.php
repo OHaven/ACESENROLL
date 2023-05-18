@@ -55,7 +55,10 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Uploaded Clearance, wait for reviewal by Registrar') }}
         </h2>     
-   
+   <br>
+   <a href="pay?id={{$id}}">   <button class="flex items-center justify-center px-3 py-2 space-x-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50" style="display:inline-flex;">
+                                                         <span>Pay Enrollment Fee</span>
+                                            </button> </a>
             </div>
         </div>
     </div>
