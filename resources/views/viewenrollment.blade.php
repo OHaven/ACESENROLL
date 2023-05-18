@@ -113,9 +113,7 @@
                 <th scope="col" class="px-6 py-3">
                     Subject
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    Teacher
-                </th>
+              
                 <th scope="col" class="px-6 py-3">
                     Action
                 </th>
@@ -130,9 +128,7 @@
                 <td class="px-6 py-4">
                     {{$stud_subj[$i]}}
                 </td>
-                <td class="px-6 py-4">
-                   {{$stud_teach[$i]}}
-                </td>
+                
                 <td class="px-6 py-4">
                   
                 </td>
@@ -145,9 +141,11 @@
 
 <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white" style="margin:2em;">Student Subjects:</h2>
 
-<form method="POST" action="editsub?idss=" style="margin: 2em;">
+<form method="POST" action="addsubjectsstu?idss={{$stnid[0]}}" style="margin: 2em;">
     @csrf
   <div class="mb-6">
+    <input type="text" name="course" value="{{$stdcrs[0]}}" hidden>
+    <input type="text" name="stdid" value="{{$stnid[0]}}" hidden>
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subject</label>
     <select name="sub" class="block mt-1 w-full" style="border: 0.5px solid rgb(214, 214, 214); border-radius: 0.4em;">
                             @for($i=0; $i < $subcounter; $i++)

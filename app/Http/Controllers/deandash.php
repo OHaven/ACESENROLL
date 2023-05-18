@@ -301,7 +301,7 @@ class deandash extends Controller
         $yrsub = yearlevel::where('status', '=', 1)->pluck('subject');
 
         $ids = yearlevel::where('status', '=', 1)->pluck('id');
-        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'crsideditcourse', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids'));
+        return view('deandash', compact('syc', 'sy', 'sem', 'crs', 'crcnt', 'crsid', 'subcnt', 'sub', 'cnteryr', 'yrlvl', 'yrcrs', 'yrsub', 'ids'));
 
     }
 

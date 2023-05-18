@@ -64,8 +64,8 @@ Route::middleware([
     Route::get('old',  [registdash::class, 'old']);
     Route::get('new',  [registdash::class, 'new']);
     Route::get('viewenroll',  [registdash::class, 'viewenroll']);
+    Route::post('addsubjectsstu',  [registdash::class, 'addsubjectsstu']);
     
-
     //dean
     Route::get('deandash',  [deandash::class, 'dashboard']);
     Route::post('addcourse',  [deandash::class, 'addcourse']);

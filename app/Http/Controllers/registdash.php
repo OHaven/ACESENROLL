@@ -204,7 +204,7 @@ class registdash extends Controller
         return view('registrar', compact('cnter', 'status', 'schoolyear', 'sem', 'c', 'syc', 'sy', 'cy', 'sxy'));
     }
 
-    public function new(Request $rq){
+    public function new (Request $rq){
         $name = StudentInfo::where('id', '=', $rq->id)->pluck('name');
         StudentInfo::where('name', '=', $name)->update(['status' => 2,]);
         $cnter = SemesterCollege::count();
@@ -278,4 +278,18 @@ class registdash extends Controller
          }
            }
 
+
+           public function addsubjectsstu(Request $rq){
+            $studentid = $rq->stdid;
+            $course = $rq->course;
+            $sub = $rq->sub;
+            student_sub::create([
+                'student_id' => $studentid,
+                'subject',
+                'course',
+                'teacher',
+                'grade',
+                'status',
+            ]);
+           }
 }
