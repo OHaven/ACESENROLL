@@ -285,11 +285,9 @@ class registdash extends Controller
             $sub = $rq->sub;
             student_sub::create([
                 'student_id' => $studentid,
-                'subject',
-                'course',
-                'teacher',
-                'grade',
-                'status',
+                'subject' => $sub,
+                'course' => $course,
+                'status' => 1,
             ]);
            }
 }
