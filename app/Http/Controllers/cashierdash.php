@@ -20,6 +20,10 @@ use App\Models\toapprovecash;
 class cashierdash extends Controller
 {
     public function dashboard(Request $rq){
+        $studentid = toapprovecash::where('status', '=', 0)->pluck('student_id');
+        $desc = toapprovecash::where('status', '=', 0)->pluck('payable_desc');
+        $fee = toapprovecash::where('status', '=', 0)->pluck('fee');
+
          return view('cashierdash');
     }
 }

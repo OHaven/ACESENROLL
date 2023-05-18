@@ -12,10 +12,8 @@
 </head>
 <x-guest-layout>
 
-        @if($stat == 0 && (strcmp(Auth::user()->role, "Student") == 1))
+        @if($stat == 0)
         @yield('pend')
-        @elseif($stat == 0 && (strcmp(Auth::user()->role, "Student") == 0))
-        @yield('regpend')
         @else
         @yield('rej')
         @endif

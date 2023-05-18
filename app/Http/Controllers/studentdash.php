@@ -28,8 +28,6 @@ class studentdash extends Controller
     
         if($count == 0){ 
             $name = Auth::user()->name;
-            
-            dd($name);
             return view('studentinfo', compact('name'));
         }
         else {
@@ -74,7 +72,7 @@ class studentdash extends Controller
 
     //    / dd($rq->cname);
         
-        StudentInfo::create([
+        StudentInfo::where('name', '=', $name)->update([
             'name' => $name,
             'age' => $age,
             'birthdate' => $bdate,
@@ -135,7 +133,6 @@ class studentdash extends Controller
 
     public function pay(Request $rq){
         toapprovecash::where('student_id' == $rq->id)->update([
-
             'status' => 1,
         ]);
         return Redirect::to('https://pm.link/org-aces/test/u3zXoGJ');

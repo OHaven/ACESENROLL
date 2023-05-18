@@ -29,9 +29,6 @@ class checkuser extends Controller
         return redirect()->intended('cashdash');
    }
 
-   elseif(strcmp(Auth::user()->role, "Teacher") == 0){
-        return redirect()->intended('cashdash');
-   }
 
 
 elseif(strcmp(Auth::user()->role, "Registrar") == 0){
@@ -40,7 +37,9 @@ elseif(strcmp(Auth::user()->role, "Registrar") == 0){
     }
 
     elseif((strcmp(Auth::user()->role, "Student") == 0)) {
-        User::where('id', '=', Auth::user()->id)->update(['status' => 1]);
+        User::where('id', '=', Auth::user()->id)->update(['status' => 1,]);
+ 
+    
         return redirect()->intended('studentdash');
     }
 
