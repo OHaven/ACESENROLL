@@ -141,7 +141,7 @@
 
 <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white" style="margin:2em;">Student Subjects:</h2>
 
-<form method="POST" action="addsubjectsstu?idss={{$stnid[0]}}" style="margin: 2em;">
+<form method="POST" action="addsubjectsstu?idss={{$stdid[0]}}" style="margin: 2em;">
     @csrf
   <div class="mb-6">
     <input type="text" name="course" value="{{$stdcrs[0]}}" hidden>

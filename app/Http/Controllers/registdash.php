@@ -261,7 +261,8 @@ class registdash extends Controller
         $ids = yearlevel::where('status', '=', 1)->pluck('id');
         $crs = Course::where('status', '=', 1)->pluck('course');
         $crcnt = Course::where('status', '=', 1)->count();
-    return view('viewenrollment', compact('subcounter', 'subjs', 'crs', 'crcnt', 'ids', 'cnteryr', 'yrlvl', 'yrsub', 'stud_teach','stud_subjc', 'stud_subj', 'fcount', 'fname', 'email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
+        $stdid = studentenroll::where('student_id', '=', $stnid[0])->pluck('id');
+    return view('viewenrollment', compact('stdid', 'subcounter', 'subjs', 'crs', 'crcnt', 'ids', 'cnteryr', 'yrlvl', 'yrsub', 'stud_teach','stud_subjc', 'stud_subj', 'fcount', 'fname', 'email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
     }
 
  
@@ -280,14 +281,77 @@ class registdash extends Controller
 
 
            public function addsubjectsstu(Request $rq){
-            $studentid = $rq->stdid;
+            $studentid = (int)$rq->idss;
+            $sdsd = (int)$rq->stdid;
             $course = $rq->course;
             $sub = $rq->sub;
             student_sub::create([
-                'student_id' => $studentid,
+                'student_id' => $sdsd,
                 'subject' => $sub,
                 'course' => $course,
                 'status' => 1,
             ]);
-           }
+           
+           
+           $name = StudentInfo::where('id', '=', $studentid)->pluck('name');
+        
+           $stnid = User::where('name', '=', $name)->pluck('id');
+           $email = User::where('name', '=', $name)->pluck('email');
+           $age = StudentInfo::where('id', '=',$studentid)->pluck('age');
+           $bday = StudentInfo::where('id', '=',$studentid)->pluck('birthdate');
+           $gender = StudentInfo::where('id', '=',$studentid)->pluck('gender');
+           $cv = StudentInfo::where('id', '=',$studentid)->pluck('civilstatus');
+           $cn = StudentInfo::where('id', '=',$studentid)->pluck('contactno');
+           $stntype = StudentInfo::where('id', '=',$studentid)->pluck('status');
+   
+           $stdntid = studentenroll::where('student_id', '=', $stnid[0])->pluck('student_id');
+     
+           $stdcrs = studentenroll::where('student_id', '=', $stnid[0])->pluck('course');
+           $stdyrlevel = studentenroll::where('student_id', '=', $stnid[0])->pluck('yearlevel');
+           $stdsy= studentenroll::where('student_id', '=', $stnid[0])->pluck('schoolyear');
+           $subcounter = Subjects::where('course', '=', $stdcrs[0])->count();
+           $subjs = Subjects::where('course', '=', $stdcrs[0])->pluck('subject');
+    
+           if($stntype[0] == 1){
+               $subcounter = Subjects::where('course', '=', $stdcrs[0])->count();
+               $subjs = Subjects::where('course', '=', $stdcrs[0])->pluck('subject');
+               
+   
+       $stud_subjc = student_sub::where('student_id', '=', $stnid[0])->where('status', '=', 1)->count();
+       $stud_subj = student_sub::where('student_id', '=', $stnid[0])->where('status', '=', 1)->pluck('subject');
+       $stud_teach = student_sub::where('student_id', '=', $stnid[0])->where('status', '=', 1)->pluck('teacher');
+   
+       $fcount = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->count();
+       $fname = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->pluck('file_path');
+       $cnteryr = yearlevel::where('status', '=', 1)->count();
+           $yrlvl = yearlevel::where('status', '=', 1)->pluck('yearlevel');
+           $yrcrs = yearlevel::where('status', '=', 1)->pluck('course');
+           $yrsub = yearlevel::where('status', '=', 1)->pluck('subject'); 
+           $ids = yearlevel::where('status', '=', 1)->pluck('id');
+           $crs = Course::where('status', '=', 1)->pluck('course');
+           $crcnt = Course::where('status', '=', 1)->count();
+           $stdid = studentenroll::where('student_id', '=', $stnid[0])->pluck('id');
+       return view('viewenrollment', compact('stdid', 'subcounter', 'subjs', 'crs', 'crcnt', 'ids', 'cnteryr', 'yrlvl', 'yrsub', 'stud_teach','stud_subjc', 'stud_subj', 'fcount', 'fname', 'email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
+       }
+   
+    
+   
+   
+    
+           elseif($stntype[0] == 0){
+               
+               return view('viewenrollment', compact('email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
+            }
+   
+            else{
+               return redirect()->intended('logout');
+            }
+}
+
+public function tocash(Request $rq){
+    $stdnt = (int)$rq->id;
+    dd($stdnt);
+}
+
+
 }
