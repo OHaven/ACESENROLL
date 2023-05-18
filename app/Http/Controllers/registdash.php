@@ -231,11 +231,26 @@ class registdash extends Controller
         $cn = StudentInfo::where('id', '=', $rq->id)->pluck('contactno');
         $stntype = StudentInfo::where('id', '=', $rq->id)->pluck('status');
 
-        $stdntid = studentenroll::where('id', '=', $stnid[0])->pluck('student_id');
-        $stdcrs = studentenroll::where('id', '=', $stnid[0])->pluck('course');
-        $stdyrlevel = studentenroll::where('id', '=', $stnid[0])->pluck('yearlevel');
-        $stdsy= studentenroll::where('id', '=', $stnid[0])->pluck('schoolyear');
-        return view('viewenrollment', compact('email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
-    }
+        $stdntid = studentenroll::where('student_id', '=', $stnid[0])->pluck('student_id');
+  
+        $stdcrs = studentenroll::where('student_id', '=', $stnid[0])->pluck('course');
+        $stdyrlevel = studentenroll::where('student_id', '=', $stnid[0])->pluck('yearlevel');
+        $stdsy= studentenroll::where('student_id', '=', $stnid[0])->pluck('schoolyear');
+
+        if($stntype[0] == 1){
+            $fcount = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->count();
+            $fname = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->pluck('file_path');
+            return view('viewenrollment', compact('fcount','fname', 'email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
+         }
+ 
+        elseif($stntype[0] == 0){
+            
+            return view('viewenrollment', compact('email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
+         }
+
+         else{
+            return redirect()->intended('logout');
+         }
+           }
 
 }

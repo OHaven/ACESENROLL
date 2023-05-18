@@ -88,7 +88,7 @@
 
     <li style="list-style-type: none;">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" style="margin-left: 2em;">
-                    {{ __('Year Level: ') }} 
+                    {{ __('Year Level: ') }}  <span style="font-size: 1em; float:right; margin-right: 1em;">{{$stdyrlevel[0]}}</span>
                 </h2>
     </li>
 
@@ -97,18 +97,18 @@
             
 
                 
-          
+          @if( $fcount < 0 )
                 <div class="mt-2" x-show="photoPreview" style="margin: 5em; margin-left: 45%;">
                     <span class="block full w-20 h-20 bg-cover bg-no-repeat bg-center"
                           x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
                           No Clearance Uploaded
                     </span>
                 </div>
-          
+          @else
                 <div class="mt-2" x-show="! photoPreview" style="margin: 5em; margin-left: 40%;">
-                    <img style="height: 15em; width: 15em;" src=""  class="h-20 w-20 object-cover">
+                    <img style="height: 15em; width: 15em;" src="{{$fname[0]}}"  class="h-20 w-20 object-cover">
                 </div>
-               
+             @endif  
             </div>
         </div>
     </div>
