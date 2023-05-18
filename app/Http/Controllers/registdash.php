@@ -11,6 +11,7 @@ use App\Models\SeniorYear;
 use App\Models\Subjects;
 use App\Models\StudentInfo;
 use App\Models\clearance;
+use App\Models\yearlevel;
 use App\Models\studentenroll;
 use App\Models\student_sub;
 use Spatie\Activitylog\Models\Activity;
@@ -238,30 +239,34 @@ class registdash extends Controller
         $stdcrs = studentenroll::where('student_id', '=', $stnid[0])->pluck('course');
         $stdyrlevel = studentenroll::where('student_id', '=', $stnid[0])->pluck('yearlevel');
         $stdsy= studentenroll::where('student_id', '=', $stnid[0])->pluck('schoolyear');
-
+        $subcounter = Subjects::where('course', '=', $stdcrs[0])->count();
+        $subjs = Subjects::where('course', '=', $stdcrs[0])->pluck('subject');
+ 
         if($stntype[0] == 1){
             $subcounter = Subjects::where('course', '=', $stdcrs[0])->count();
             $subjs = Subjects::where('course', '=', $stdcrs[0])->pluck('subject');
-            for($i = 0; $i < $subcounter; $i++){
-        student_sub::create([
-            'student_id' => $stnid[0],
-            'course' => $stdcrs[0],
-            'subject' => $subjs[$i],
-            'status' => 1,
-        ]);
-    }
+            
+
+    $stud_subjc = student_sub::where('student_id', '=', $stnid[0])->where('status', '=', 1)->count();
+    $stud_subj = student_sub::where('student_id', '=', $stnid[0])->where('status', '=', 1)->pluck('subject');
+    $stud_teach = student_sub::where('student_id', '=', $stnid[0])->where('status', '=', 1)->pluck('teacher');
+    $fcount = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->count();
+    $fname = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->pluck('file_path');
+    $cnteryr = yearlevel::where('status', '=', 1)->count();
+        $yrlvl = yearlevel::where('status', '=', 1)->pluck('yearlevel');
+        $yrcrs = yearlevel::where('status', '=', 1)->pluck('course');
+        $yrsub = yearlevel::where('status', '=', 1)->pluck('subject');
+    return view('viewenrollment', compact('cnteryr', 'yrlvl', 'yrsub', 'stud_teach','stud_subjc', 'stud_subj', 'fcount', 'fname', 'email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
     }
 
-        // if($stntype[0] == 1){
-        //     $fcount = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->count();
-        //     $fname = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->pluck('file_path');
-        //     return view('viewenrollment', compact('fcount','fname', 'email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
-        //  }
  
-        // elseif($stntype[0] == 0){
+
+
+ 
+        elseif($stntype[0] == 0){
             
-        //     return view('viewenrollment', compact('email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
-        //  }
+            return view('viewenrollment', compact('email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
+         }
 
          else{
             return redirect()->intended('logout');
