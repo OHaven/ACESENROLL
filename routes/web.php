@@ -7,6 +7,7 @@ use App\Http\Controllers\admindash;
 use App\Http\Controllers\registdash;
 use App\Http\Controllers\deandash;
 use App\Http\Controllers\studentdash;
+use App\Http\Controllers\cashierdash;
 
 
 /*
@@ -88,7 +89,9 @@ Route::middleware([
     Route::post('addinfo',  [studentdash::class, 'addinfo']);
     Route::post('upclear', [studentdash::class, 'upclear']);
     Route::post('enrollapp', [studentdash::class, 'enrollapp']);
-    
+
+    //cashier
+    Route::get('cashdash',  [cashierdash::class, 'dashboard']);
     
     Route::get('logout', function () {
         Auth::guard('web')->logout();

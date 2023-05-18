@@ -12,8 +12,8 @@ class toapprovecash extends Model
     
     protected $fillable = [
         'student_id',
-        'payable',
-        'year',
+        'payable_desc',
+        'fee',
         'status',
     ];
 
