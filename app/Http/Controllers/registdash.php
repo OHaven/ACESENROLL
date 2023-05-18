@@ -14,6 +14,7 @@ use App\Models\clearance;
 use App\Models\yearlevel;
 use App\Models\studentenroll;
 use App\Models\student_sub;
+use App\Models\Course;
 use Spatie\Activitylog\Models\Activity;
 
 
@@ -250,13 +251,17 @@ class registdash extends Controller
     $stud_subjc = student_sub::where('student_id', '=', $stnid[0])->where('status', '=', 1)->count();
     $stud_subj = student_sub::where('student_id', '=', $stnid[0])->where('status', '=', 1)->pluck('subject');
     $stud_teach = student_sub::where('student_id', '=', $stnid[0])->where('status', '=', 1)->pluck('teacher');
+
     $fcount = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->count();
     $fname = clearance::where('userid', '=', $stnid[0])->where('status', '=', 1)->pluck('file_path');
     $cnteryr = yearlevel::where('status', '=', 1)->count();
         $yrlvl = yearlevel::where('status', '=', 1)->pluck('yearlevel');
         $yrcrs = yearlevel::where('status', '=', 1)->pluck('course');
-        $yrsub = yearlevel::where('status', '=', 1)->pluck('subject');
-    return view('viewenrollment', compact('cnteryr', 'yrlvl', 'yrsub', 'stud_teach','stud_subjc', 'stud_subj', 'fcount', 'fname', 'email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
+        $yrsub = yearlevel::where('status', '=', 1)->pluck('subject'); 
+        $ids = yearlevel::where('status', '=', 1)->pluck('id');
+        $crs = Course::where('status', '=', 1)->pluck('course');
+        $crcnt = Course::where('status', '=', 1)->count();
+    return view('viewenrollment', compact('subcounter', 'subjs', 'crs', 'crcnt', 'ids', 'cnteryr', 'yrlvl', 'yrsub', 'stud_teach','stud_subjc', 'stud_subj', 'fcount', 'fname', 'email', 'name', 'age', 'bday', 'gender', 'cv', 'cn', 'stntype', 'stnid', 'stdntid', 'stdcrs', 'stdyrlevel', 'stdsy'));
     }
 
  
